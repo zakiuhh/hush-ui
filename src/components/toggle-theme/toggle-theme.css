@@ -1,0 +1,180 @@
+/* ==========================================================================
+   MORPHING SKY THEME TOGGLE (WITH SUNRAY PULSE & STAR TWINKLE)
+   ========================================================================== */
+
+.ui-theme-toggle {
+  position: relative;
+  width: 70px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  /* Daytime Hush UI Sky Gradient */
+  background: linear-gradient(135deg, #a5cceb 0%, #c9b8db 100%);
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  outline: none;
+  box-shadow: var(--shadow-xs);
+  transition: background var(--duration-slow) var(--ease-soft-out),
+              border-color var(--duration-base) var(--ease-soft-out),
+              transform var(--duration-fast) var(--ease-soft-out),
+              box-shadow var(--duration-fast) var(--ease-soft-out);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.ui-theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.ui-theme-toggle:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.ui-theme-toggle:focus-visible {
+  box-shadow: var(--glow-primary);
+}
+
+/* Night Sky Gradient */
+.dark .ui-theme-toggle {
+  background: linear-gradient(135deg, #18151e 0%, #2c2738 100%);
+  border-color: #3d3747;
+}
+
+/* --- Celestial Orb (Sun -> Moon) --- */
+.ui-theme-orb {
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: var(--radius-full);
+  background-color: #FCD34D;
+  /* Pulsing daytime sun aura */
+  animation: sun-ray-pulse 3s ease-in-out infinite;
+  transition: transform var(--duration-slow) cubic-bezier(0.34, 1.4, 0.64, 1),
+              background-color var(--duration-slow) var(--ease-soft-out),
+              box-shadow var(--duration-slow) var(--ease-soft-out);
+  z-index: 3;
+}
+
+/* Moon Transformation */
+.dark .ui-theme-orb {
+  transform: translateX(33px);
+  background-color: #EDE8F5;
+  box-shadow: 0 0 10px rgba(201, 184, 219, 0.45), inset -2px -2px 0 rgba(167, 159, 176, 0.4);
+  animation: none; /* Disable sun pulse in night mode */
+}
+
+/* --- Moon Craters --- */
+.ui-moon-crater {
+  position: absolute;
+  border-radius: var(--radius-full);
+  background-color: #BDB4C7;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity var(--duration-base) var(--ease-soft-out),
+              transform var(--duration-base) var(--ease-spring);
+}
+
+.ui-moon-crater--1 { width: 5px; height: 5px; top: 5px; left: 7px; }
+.ui-moon-crater--2 { width: 4px; height: 4px; bottom: 5px; left: 13px; }
+.ui-moon-crater--3 { width: 3px; height: 3px; top: 11px; right: 5px; }
+
+.dark .ui-moon-crater {
+  opacity: 0.75;
+  transform: scale(1);
+}
+
+/* --- Puffy Corner Cloud (Daytime) --- */
+.ui-theme-cloud {
+  position: absolute;
+  bottom: -4px;
+  right: 2px;
+  width: 34px;
+  height: 22px;
+  z-index: 2;
+  transition: transform var(--duration-slow) var(--ease-soft-out),
+              opacity var(--duration-base) var(--ease-soft-out);
+  pointer-events: none;
+}
+
+.dark .ui-theme-cloud {
+  transform: translateY(18px) scale(0.6);
+  opacity: 0;
+}
+
+/* --- Twinkling Night Stars --- */
+.ui-theme-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ui-star {
+  position: absolute;
+  background-color: #FFFFFF;
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: translateY(-8px) scale(0);
+  transition: transform var(--duration-slow) var(--ease-spring),
+              opacity var(--duration-base) var(--ease-soft-out);
+}
+
+.ui-star--1 { width: 3px; height: 3px; top: 8px; left: 10px; }
+.ui-star--2 { width: 2px; height: 2px; top: 20px; left: 18px; }
+.ui-star--3 { width: 3.5px; height: 3.5px; top: 10px; left: 24px; }
+.ui-star--4 { width: 2px; height: 2px; top: 23px; left: 8px; }
+
+/* Dark mode active twinkle with staggered timings */
+.dark .ui-star {
+  transform: translateY(0) scale(1);
+}
+
+.dark .ui-star--1 {
+  animation: star-twinkle 2.4s ease-in-out infinite;
+  animation-delay: 0.1s;
+}
+
+.dark .ui-star--2 {
+  animation: star-twinkle 1.8s ease-in-out infinite;
+  animation-delay: 0.7s;
+}
+
+.dark .ui-star--3 {
+  animation: star-twinkle 2.2s ease-in-out infinite;
+  animation-delay: 1.3s;
+}
+
+.dark .ui-star--4 {
+  animation: star-twinkle 2.6s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+/* --- Keyframe Animations --- */
+
+/* Breathing sun aura glow */
+@keyframes sun-ray-pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(252, 211, 77, 0.55), 0 0 16px rgba(252, 211, 77, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(252, 211, 77, 0.85), 0 0 22px rgba(252, 211, 77, 0.45);
+  }
+}
+
+/* Staggered star twinkle shimmer */
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}

@@ -1,0 +1,21 @@
+.ui-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-xs);
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  font-weight: var(--font-medium);
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.ui-chip--primary {
+  background-color: rgba(201, 184, 219, 0.35);
+  color: var(--foreground);
+}
+
+.ui-chip--secondary {
+  background-color: rgba(180, 199, 180, 0.35);
+  color: var(--foreground);
+}

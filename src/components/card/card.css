@@ -1,0 +1,15 @@
+.ui-card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--duration-base) var(--ease-soft-out),
+              box-shadow var(--duration-base) var(--ease-soft-out),
+              border-color var(--duration-base) var(--ease-standard);
+}
+
+.ui-card:hover {
+  box-shadow: var(--shadow-lg);
+}

@@ -1,0 +1,175 @@
+/* ==========================================================================
+   COMMAND PALETTE (CTRL+K SPOTLIGHT SEARCH)
+   ========================================================================== */
+
+.ui-command-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(30, 27, 36, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2500;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 80px 20px 20px 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-base) var(--ease-soft-out),
+              visibility var(--duration-base);
+}
+
+.ui-command-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ui-command-dialog {
+  width: 100%;
+  max-width: 620px;
+  background-color: var(--card);
+  border: var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), 0 0 0 1px color-mix(in srgb, var(--primary) 30%, transparent);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.95) translateY(-12px);
+  opacity: 0;
+  transition: transform var(--duration-slow) var(--spring-gentle),
+              opacity var(--duration-base) var(--ease-soft-out);
+}
+
+.ui-command-backdrop.is-open .ui-command-dialog {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Command Header & Search Bar */
+.ui-command-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: var(--border-default);
+  background-color: var(--card);
+}
+
+.ui-command-search-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+.ui-command-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  outline: none;
+}
+
+.ui-command-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.ui-command-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+/* Command Body & Groups */
+.ui-command-body {
+  max-height: 330px;
+  overflow-y: auto;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ui-command-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ui-command-group-heading {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--muted-foreground);
+  padding: var(--space-1) var(--space-3);
+}
+
+.ui-command-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: all var(--duration-fast) var(--ease-soft-out);
+}
+
+.ui-command-item:hover,
+.ui-command-item.is-selected {
+  background-color: color-mix(in srgb, var(--primary) 18%, var(--card));
+  color: var(--foreground);
+}
+
+.ui-command-item-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ui-command-icon {
+  font-size: 14px;
+  color: var(--primary);
+  width: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-command-shortcut {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Command Footer */
+.ui-command-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--muted);
+  border-top: var(--border-default);
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+
+.ui-command-hints {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ui-command-hint-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

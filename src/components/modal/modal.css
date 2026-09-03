@@ -1,0 +1,43 @@
+.ui-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(58, 53, 65, var(--opacity-scrim));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-slow) var(--ease-soft-out),
+              visibility var(--duration-slow);
+  pointer-events: none;
+}
+
+.ui-modal-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ui-modal {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border-radius: var(--radius-lg);
+  border: var(--border-default);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.92) translateY(14px);
+  opacity: 0;
+  transition: transform var(--duration-slow) var(--ease-spring),
+              opacity var(--duration-slow) var(--ease-soft-out);
+}
+
+.ui-modal-backdrop.is-open .ui-modal {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}

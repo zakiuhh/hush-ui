@@ -1,0 +1,106 @@
+/* ==========================================================================
+   ANIMATED FLOATING TOOLTIP
+   ========================================================================== */
+
+[data-tooltip] {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Base styling for both bubble and arrow */
+[data-tooltip]::before,
+[data-tooltip]::after {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: var(--z-popover);
+  will-change: transform, opacity;
+  /* Smooth exit transition */
+  transition: opacity 160ms var(--ease-soft-out),
+              transform 220ms var(--ease-soft-out),
+              visibility 220ms;
+}
+
+/* --- 1. Top Tooltip (Default) --- */
+
+/* Tooltip Pill */
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px) scale(0.88);
+  transform-origin: bottom center;
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+  color: var(--background);
+  background-color: var(--foreground);
+  border-radius: var(--radius-xs);
+  box-shadow: 0 4px 14px rgba(58, 53, 65, 0.18);
+}
+
+/* Tooltip Arrow */
+[data-tooltip]::after {
+  content: "";
+  bottom: calc(100% + 1px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px) scale(0.88);
+  transform-origin: top center;
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: var(--foreground) transparent transparent transparent;
+}
+
+/* --- Hover / Focus Active State (Spring Pop-In) --- */
+[data-tooltip]:hover::before,
+[data-tooltip]:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+  /* Floats upward with spring bounce */
+  transform: translateX(-50%) translateY(-6px) scale(1);
+  transition: opacity 180ms ease,
+              transform 260ms cubic-bezier(0.34, 1.5, 0.64, 1),
+              visibility 260ms;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-6px) scale(1);
+  transition: opacity 180ms ease,
+              transform 260ms cubic-bezier(0.34, 1.5, 0.64, 1),
+              visibility 260ms;
+}
+
+/* --- 2. Bottom Tooltip Variant --- */
+
+[data-tooltip-position="bottom"]::before {
+  bottom: auto;
+  top: calc(100% + 6px);
+  transform: translateX(-50%) translateY(-8px) scale(0.88);
+  transform-origin: top center;
+}
+
+[data-tooltip-position="bottom"]::after {
+  bottom: auto;
+  top: calc(100% + 1px);
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent var(--foreground) transparent;
+  transform: translateX(-50%) translateY(-8px) scale(0.88);
+  transform-origin: bottom center;
+}
+
+[data-tooltip-position="bottom"]:hover::before,
+[data-tooltip-position="bottom"]:focus-visible::before {
+  transform: translateX(-50%) translateY(6px) scale(1);
+}
+
+[data-tooltip-position="bottom"]:hover::after,
+[data-tooltip-position="bottom"]:focus-visible::after {
+  transform: translateX(-50%) translateY(6px) scale(1);
+}

@@ -1,0 +1,83 @@
+/* src/components/button/button.css */
+
+.ui-button,
+a.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  font-weight: var(--font-medium);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-xs);
+  text-decoration: none; /* Removes link underline */
+  outline: none;
+  user-select: none;
+  transition: transform var(--duration-fast) var(--ease-soft-out),
+              box-shadow var(--duration-fast) var(--ease-soft-out),
+              filter var(--duration-fast) var(--ease-soft-out);
+}
+
+.ui-button:hover,
+a.ui-button:hover {
+  text-decoration: none;
+  filter: brightness(0.97);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.ui-button:active,
+a.ui-button:active {
+  transform: translateY(0) scale(0.97);
+  filter: brightness(0.92);
+}
+
+.ui-button:focus-visible,
+a.ui-button:focus-visible {
+  box-shadow: var(--glow-primary);
+}
+
+.ui-button:disabled,
+a.ui-button[aria-disabled="true"] {
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
+  transform: none;
+}
+
+.ui-button--secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.ui-button--accent {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.ui-button--destructive {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+.ui-button--ghost {
+  background-color: transparent;
+  border: var(--border-default);
+  color: var(--foreground);
+  box-shadow: none;
+}
+
+.ui-button--ghost:hover,
+a.ui-button--ghost:hover {
+  background-color: color-mix(in srgb, var(--primary) 18%, var(--card));
+  border-color: color-mix(in srgb, var(--primary) 45%, transparent);
+  color: var(--foreground);
+  filter: none;
+  box-shadow: var(--shadow-xs);
+}

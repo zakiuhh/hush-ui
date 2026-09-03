@@ -1,0 +1,62 @@
+{
+  "name": "@zak1.uhh/hush-ui",
+  "version": "1.1.0",
+  "description": "A calm, spring-motion Hush UI design system with 40 accessible primitives and 26 responsive sections for vanilla JS, React, Vue, Svelte, and modern web applications.",
+  "type": "module",
+  "main": "./dist/hush-ui.umd.cjs",
+  "module": "./dist/hush-ui.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/hush-ui.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/hush-ui.js",
+      "require": "./dist/hush-ui.umd.cjs"
+    },
+    "./css": "./dist/hush-ui.css",
+    "./dist/hush-ui.css": "./dist/hush-ui.css"
+  },
+  "files": [
+    "dist",
+    "src",
+    "types",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "ui",
+    "design-system",
+    "Hush UI",
+    "components",
+    "css",
+    "spring-motion",
+    "tailwind-alternative",
+    "hush-ui",
+    "accessible-components",
+    "web-components"
+  ],
+  "author": "zak1.uhh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakiuhh/hush-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zakiuhh/hush-ui/issues"
+  },
+  "homepage": "https://github.com/zakiuhh/hush-ui#readme",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run build:docs && npm run build:lib",
+    "build:lib": "vite build --config vite.lib.config.ts && node -e \"require('fs').copyFileSync('types/index.d.ts', 'dist/index.d.ts')\"",
+    "build:docs": "vite build --config vite.config.ts",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build:lib"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  },
+  "dependencies": {
+    "lucide": "^1.39.0"
+  }
+}

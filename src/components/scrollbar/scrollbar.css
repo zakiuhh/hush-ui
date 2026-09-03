@@ -1,0 +1,135 @@
+/* ==========================================================================
+   HUSH UI - CUSTOM SCROLLBAR COMPONENT
+   ========================================================================== */
+
+/* 1. Global Baseline Scrollbar Styles (Standard + WebKit) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--primary) 35%, var(--border)) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--primary) 32%, var(--border));
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background-color var(--duration-fast) var(--ease-soft-out);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: color-mix(in srgb, var(--primary) 80%, var(--foreground));
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* 2. Utility Classes for Containers */
+
+/* Base Custom Scrollbar */
+.ui-scrollbar {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--primary) 35%, var(--border)) transparent;
+}
+
+.ui-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.ui-scrollbar::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--muted) 40%, transparent);
+  border-radius: var(--radius-full);
+}
+
+.ui-scrollbar::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.ui-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
+}
+
+/* Slim Variant (5px) - Ideal for Dropdowns, Sidebars & Code Blocks */
+.ui-scrollbar--slim,
+.ui-scrollbar--thin {
+  scrollbar-width: thin;
+}
+
+.ui-scrollbar--slim::-webkit-scrollbar,
+.ui-scrollbar--thin::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.ui-scrollbar--slim::-webkit-scrollbar-thumb,
+.ui-scrollbar--thin::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+  border-radius: var(--radius-full);
+}
+
+/* Floating Pill Scrollbar Variant */
+.ui-scrollbar--pill::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.ui-scrollbar--pill::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--muted) 60%, var(--card));
+  border-radius: var(--radius-full);
+  margin: 4px;
+}
+
+.ui-scrollbar--pill::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--card);
+}
+
+/* Pigment Color Overrides */
+.ui-scrollbar--sage {
+  scrollbar-color: var(--secondary) transparent;
+}
+.ui-scrollbar--sage::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--secondary) 45%, var(--border));
+}
+.ui-scrollbar--sage::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary);
+}
+
+.ui-scrollbar--butter {
+  scrollbar-color: var(--accent) transparent;
+}
+.ui-scrollbar--butter::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+.ui-scrollbar--butter::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent);
+}
+
+.ui-scrollbar--blush {
+  scrollbar-color: var(--destructive) transparent;
+}
+.ui-scrollbar--blush::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--destructive) 45%, var(--border));
+}
+.ui-scrollbar--blush::-webkit-scrollbar-thumb:hover {
+  background-color: var(--destructive);
+}

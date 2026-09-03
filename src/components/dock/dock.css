@@ -1,0 +1,96 @@
+/* ==========================================================================
+   HUSH UI - MACOS-STYLE FLOATING SPRING DOCK COMPONENT
+   ========================================================================== */
+
+.ui-dock {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  padding: 10px 14px;
+  background-color: color-mix(in srgb, var(--card) 85%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--border-default);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg), 0 0 0 1px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.ui-dock-item {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--card);
+  border: var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--foreground);
+  cursor: pointer;
+  transform-origin: bottom center;
+  transition: transform 180ms var(--spring-hover),
+              background-color var(--duration-fast) var(--ease-soft-out),
+              border-color var(--duration-fast) var(--ease-soft-out);
+  box-shadow: var(--shadow-xs);
+}
+
+.ui-dock-item:hover {
+  background-color: color-mix(in srgb, var(--primary) 22%, var(--card));
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.ui-dock-icon {
+  width: 20px;
+  height: 20px;
+  color: inherit;
+  transition: transform 180ms var(--spring-hover);
+}
+
+/* Tooltip on Hover */
+.ui-dock-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 4px 8px;
+  border-radius: var(--radius-xs);
+  background-color: rgba(30, 27, 36, 0.88);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: var(--font-semibold);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--duration-fast) var(--ease-soft-out);
+  box-shadow: var(--shadow-sm);
+  z-index: 20;
+}
+
+.ui-dock-item:hover .ui-dock-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Active Notification Dot */
+.ui-dock-dot {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+}
+
+/* Divider inside dock */
+.ui-dock-separator {
+  width: 1px;
+  height: 28px;
+  background-color: var(--border);
+  margin: 0 4px;
+  align-self: center;
+}

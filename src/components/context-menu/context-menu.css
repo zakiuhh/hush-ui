@@ -1,0 +1,105 @@
+/* ==========================================================================
+   HUSH UI - CUSTOM CONTEXT MENU
+   ========================================================================== */
+
+/* Target Trigger Area Card */
+.ui-context-target {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed var(--border-default, rgba(0, 0, 0, 0.12));
+  border-radius: var(--radius-md, 16px);
+  background-color: color-mix(in srgb, var(--muted, #F0EDF5) 50%, var(--card, #FFFFFF));
+  padding: 20px;
+  text-align: center;
+  user-select: none;
+  cursor: context-menu;
+  transition: all var(--duration-fast, 150ms) var(--ease-soft-out);
+}
+
+.ui-context-target:hover {
+  border-color: var(--primary, #C9B8DB);
+  background-color: color-mix(in srgb, var(--primary, #C9B8DB) 8%, var(--card, #FFFFFF));
+}
+
+/* Floating Context Menu Modal / Popup */
+.ui-context-menu {
+  position: fixed;
+  z-index: 9999;
+  min-width: 190px;
+  background-color: var(--card, #FFFFFF);
+  border: var(--border-default, 1px solid rgba(0, 0, 0, 0.08));
+  border-radius: var(--radius-md, 14px);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.92) translateY(-4px);
+  transform-origin: top left;
+  transition: opacity 160ms var(--ease-soft-out),
+              transform 180ms var(--spring-hover, cubic-bezier(0.34, 1.56, 0.64, 1));
+}
+
+.ui-context-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1) translateY(0);
+}
+
+/* Menu Item */
+.ui-context-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 10px;
+  font-family: inherit;
+  font-size: var(--text-xs, 12px);
+  font-weight: 500;
+  color: var(--foreground, #1E1B24);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm, 8px);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--duration-fast, 150ms) var(--ease-soft-out),
+              color var(--duration-fast, 150ms) var(--ease-soft-out);
+  outline: none;
+}
+
+.ui-context-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ui-context-item:hover,
+.ui-context-item:focus-visible {
+  background-color: color-mix(in srgb, var(--primary, #C9B8DB) 20%, var(--card, #FFFFFF));
+  color: var(--foreground, #1E1B24);
+}
+
+.ui-context-item--danger {
+  color: var(--destructive, #E57373);
+}
+
+.ui-context-item--danger:hover,
+.ui-context-item--danger:focus-visible {
+  background-color: color-mix(in srgb, var(--destructive, #E57373) 14%, var(--card, #FFFFFF));
+  color: var(--destructive, #E57373);
+}
+
+/* Divider */
+.ui-context-divider {
+  height: 1px;
+  background-color: var(--border-default, rgba(0, 0, 0, 0.08));
+  margin: 4px 2px;
+}

@@ -1,0 +1,159 @@
+/* ==========================================================================
+   Interactive Dropzone Component
+   ========================================================================== */
+
+.ui-dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3, 12px);
+  padding: var(--space-6, 24px) var(--space-4, 16px);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-md, 12px);
+  background-color: color-mix(in srgb, var(--card) 60%, transparent);
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--duration-fast, 150ms) var(--ease-soft-out, ease-out),
+              background-color var(--duration-fast, 150ms) var(--ease-soft-out, ease-out),
+              transform var(--duration-fast, 150ms) var(--spring-hover, cubic-bezier(0.16, 1, 0.3, 1)),
+              box-shadow var(--duration-fast, 150ms) var(--ease-soft-out, ease-out);
+  user-select: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ui-dropzone:hover,
+.ui-dropzone:focus-visible {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 8%, var(--card));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.ui-dropzone.is-dragover {
+  border-color: var(--secondary, #10b981);
+  background-color: color-mix(in srgb, var(--secondary, #10b981) 12%, var(--card));
+  transform: scale(1.02);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--secondary, #10b981) 20%, transparent);
+}
+
+.ui-dropzone-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.ui-dropzone-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full, 9999px);
+  background-color: color-mix(in srgb, var(--primary) 15%, var(--card));
+  color: var(--primary);
+  transition: transform var(--duration-fast, 150ms) var(--spring-hover, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.ui-dropzone:hover .ui-dropzone-icon-box,
+.ui-dropzone.is-dragover .ui-dropzone-icon-box {
+  transform: scale(1.12);
+}
+
+.ui-dropzone-title {
+  font-size: var(--text-sm, 14px);
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.ui-dropzone-title span {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ui-dropzone-desc {
+  font-size: var(--text-xs, 12px);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* Dropzone File Queue / List */
+.ui-dropzone-filelist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.ui-dropzone-file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  background-color: var(--card);
+  border: var(--border-default);
+  border-radius: var(--radius-sm, 8px);
+  box-shadow: var(--shadow-xs);
+  animation: dropzoneFileIn 200ms var(--ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+@keyframes dropzoneFileIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ui-dropzone-file-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.ui-dropzone-file-name {
+  font-size: var(--text-xs, 12px);
+  font-weight: 600;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+.ui-dropzone-file-size {
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+
+.ui-dropzone-remove-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-xs, 4px);
+  transition: all var(--duration-fast, 150ms) var(--ease-soft-out, ease-out);
+}
+
+.ui-dropzone-remove-btn:hover {
+  color: var(--destructive);
+  background-color: color-mix(in srgb, var(--destructive) 12%, transparent);
+}

@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Tree View / Directory Component
+   ========================================================================== */
+
+.ui-tree-view {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px;
+  background-color: var(--card);
+  border: var(--border-default);
+  border-radius: var(--radius-md, 12px);
+  width: 100%;
+  max-width: 320px;
+  box-shadow: var(--shadow-xs);
+  font-family: var(--font-body, system-ui);
+  box-sizing: border-box;
+}
+
+.ui-tree-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-tree-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius-xs, 6px);
+  font-size: var(--text-xs, 12px);
+  font-weight: 500;
+  color: var(--foreground);
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--duration-fast, 150ms) var(--ease-soft-out, ease-out);
+}
+
+.ui-tree-row:hover {
+  background-color: var(--muted);
+}
+
+.ui-tree-row.is-selected {
+  background-color: color-mix(in srgb, var(--primary) 15%, var(--card));
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.ui-tree-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+  transition: transform var(--duration-fast, 150ms) var(--ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.ui-tree-item.is-open > .ui-tree-row .ui-tree-chevron {
+  transform: rotate(90deg);
+}
+
+.ui-tree-children {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 18px;
+  border-left: 1px solid var(--border);
+  margin-left: 12px;
+  margin-top: 2px;
+}
+
+.ui-tree-item.is-open > .ui-tree-children {
+  display: flex;
+}

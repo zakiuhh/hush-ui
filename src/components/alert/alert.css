@@ -1,0 +1,82 @@
+/* ==========================================================================
+   HUSH UI ALERT CALLOUTS
+   ========================================================================== */
+
+.ui-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  color: var(--foreground);
+  box-shadow: var(--shadow-xs);
+  transition: opacity var(--duration-base) var(--ease-soft-out),
+              transform var(--duration-base) var(--ease-soft-out);
+}
+
+.ui-alert--info {
+  background-color: rgba(201, 184, 219, 0.15);
+  border-color: rgba(201, 184, 219, 0.4);
+}
+
+.ui-alert--success {
+  background-color: rgba(180, 199, 180, 0.18);
+  border-color: rgba(180, 199, 180, 0.45);
+}
+
+.ui-alert--warning {
+  background-color: rgba(237, 225, 176, 0.2);
+  border-color: rgba(237, 225, 176, 0.5);
+}
+
+.ui-alert--destructive {
+  background-color: rgba(232, 196, 196, 0.2);
+  border-color: rgba(232, 196, 196, 0.45);
+}
+
+.ui-alert-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+
+.ui-alert-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ui-alert-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-sm);
+}
+
+.ui-alert-description {
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  color: var(--muted-foreground);
+}
+
+.ui-alert-close {
+  background: transparent;
+  border: none;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-content: center;
+  border-radius: var(--radius-xs);
+  transition: all var(--duration-fast) var(--ease-soft-out);
+}
+
+.ui-alert-close:hover {
+  background-color: rgba(58, 53, 65, 0.08);
+  color: var(--foreground);
+}

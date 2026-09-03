@@ -1,0 +1,128 @@
+/* ==========================================================================
+   HUSH UI - TIMELINE & ACTIVITY STREAM COMPONENT
+   ========================================================================== */
+
+.ui-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-left: 28px;
+  width: 100%;
+  max-width: 680px;
+}
+
+/* Vertical Continuous Rail Line */
+.ui-timeline::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 11px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary) 0%, color-mix(in srgb, var(--secondary) 60%, var(--border)) 100%);
+  border-radius: var(--radius-full);
+}
+
+/* Timeline Item Node */
+.ui-timeline-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Pulse / Node Dot */
+.ui-timeline-node {
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background-color: var(--card);
+  border: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 22%, var(--card));
+  z-index: 2;
+  transition: transform var(--duration-fast) var(--spring-hover),
+              box-shadow var(--duration-fast) var(--ease-soft-out);
+}
+
+.ui-timeline-item:hover .ui-timeline-node {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--primary) 35%, var(--card));
+}
+
+/* Semantic Node Variants */
+.ui-timeline-node--secondary {
+  border-color: var(--secondary);
+  color: var(--secondary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--secondary) 22%, var(--card));
+}
+.ui-timeline-item:hover .ui-timeline-node--secondary {
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--secondary) 35%, var(--card));
+}
+
+.ui-timeline-node--accent {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, var(--card));
+}
+.ui-timeline-item:hover .ui-timeline-node--accent {
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 35%, var(--card));
+}
+
+/* Header & Meta Row */
+.ui-timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.ui-timeline-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ui-timeline-title {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.ui-timeline-time {
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  font-family: var(--font-mono, monospace);
+}
+
+/* Card Container */
+.ui-timeline-card {
+  background-color: var(--card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--duration-fast) var(--spring-hover),
+              border-color var(--duration-fast) var(--ease-soft-out);
+}
+
+.ui-timeline-item:hover .ui-timeline-card {
+  transform: translateX(4px);
+  border-color: var(--primary);
+}
+
+.ui-timeline-desc {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--leading-sm);
+  margin: 0;
+}

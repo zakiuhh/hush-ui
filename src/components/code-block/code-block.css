@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Code Block & File Tree Component
+   ========================================================================== */
+
+.ui-code-block {
+  display: flex;
+  flex-direction: column;
+  border: var(--border-default);
+  border-radius: var(--radius-md, 12px);
+  background-color: var(--card);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ui-code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  background-color: var(--muted);
+  border-bottom: var(--border-default);
+  flex-wrap: wrap;
+}
+
+.ui-code-block-files {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ui-code-block-files::-webkit-scrollbar {
+  display: none;
+}
+
+.ui-code-file-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-family: var(--font-mono, monospace);
+  font-weight: 600;
+  color: var(--muted-foreground);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs, 4px);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--duration-fast, 150ms) var(--ease-soft-out, ease-out);
+}
+
+.ui-code-file-tab:hover {
+  color: var(--foreground);
+  background-color: color-mix(in srgb, var(--card) 60%, transparent);
+}
+
+.ui-code-file-tab.is-active {
+  color: var(--foreground);
+  background-color: var(--card);
+  border-color: var(--border);
+  box-shadow: var(--shadow-xs);
+}
+
+.ui-code-block-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ui-code-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--radius-xs, 4px);
+  background-color: var(--card);
+  border: var(--border-default);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all var(--duration-fast, 150ms) var(--ease-soft-out, ease-out);
+}
+
+.ui-code-copy-btn:hover {
+  background-color: color-mix(in srgb, var(--primary) 12%, var(--card));
+  border-color: var(--primary);
+}
+
+.ui-code-copy-btn.is-copied {
+  background-color: #10b981 !important;
+  color: #ffffff !important;
+  border-color: #10b981 !important;
+}
+
+.ui-code-block-content {
+  margin: 0;
+  padding: 16px;
+  font-family: 'JetBrains Mono', var(--font-mono, monospace);
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--foreground);
+  background-color: color-mix(in srgb, var(--foreground) 3%, var(--card));
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ui-code-block-content code {
+  font-family: inherit;
+}

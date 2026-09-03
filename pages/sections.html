@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pre-Made Sections — Hush UI</title>
+
+  <!-- Google Fonts: Fraunces, Manrope, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Master Stylesheet Entry -->
+  <link rel="stylesheet" href="/src/index.css" />
+  <link rel="stylesheet" href="/src/pages/sections.css" />
+</head>
+<body class="sections-page-body">
+
+  <div class="sections-page-wrapper">
+
+    <!-- 1. Top Navigation Bar -->
+    <header class="sections-top-nav">
+      <div class="sections-nav-left">
+        <a href="/" class="ui-button ui-button--ghost sections-back-btn" style="gap: 6px;">
+          <svg class="lucide lucide-arrow-left" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          <span>Home</span>
+        </a>
+        <div class="sections-brand-badge">
+          <span class="brand-sparkle" aria-hidden="true">
+            <svg class="lucide lucide-sparkles" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          </span>
+          <span class="brand-name">Hush UI</span>
+          <span class="brand-sep sec-desktop-only">/</span>
+          <span class="brand-page sec-desktop-only">Sections</span>
+        </div>
+      </div>
+
+      <div class="sections-nav-right">
+        <a href="/pages/components.html" class="ui-button ui-button--ghost sec-desktop-only" style="font-size: var(--text-xs); padding: 6px 14px; gap: 6px;">
+          <svg class="lucide lucide-layers" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+          </svg>
+          <span>Components (40)</span>
+        </a>
+
+        <a href="https://github.com/zakiuhh/hush-ui" target="_blank" rel="noreferrer" class="ui-button ui-button--ghost sec-desktop-only" style="font-size: var(--text-xs); padding: 6px 12px; gap: 6px;" title="View repository on GitHub">
+          <svg class="lucide lucide-github" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3.5 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+
+        <!-- Sky Morphing Theme Toggle -->
+        <button id="theme-btn" class="ui-theme-toggle" type="button" aria-label="Toggle light and dark theme">
+          <div class="ui-theme-stars" aria-hidden="true">
+            <span class="ui-star ui-star--1"></span>
+            <span class="ui-star ui-star--2"></span>
+            <span class="ui-star ui-star--3"></span>
+            <span class="ui-star ui-star--4"></span>
+          </div>
+          <div class="ui-theme-orb" aria-hidden="true">
+            <span class="ui-moon-crater ui-moon-crater--1"></span>
+            <span class="ui-moon-crater ui-moon-crater--2"></span>
+            <span class="ui-moon-crater ui-moon-crater--3"></span>
+          </div>
+          <svg class="ui-theme-cloud" viewBox="0 0 34 22" fill="none" aria-hidden="true">
+            <path d="M7 19h20a5 5 0 0 0 1.2-9.85A6.5 6.5 0 0 0 16 6a6.5 6.5 0 0 0-6.1 4.2A5 5 0 0 0 7 19z" fill="#FFFFFF" fill-opacity="0.92"/>
+            <path d="M12 19h14a4 4 0 0 0 0-8 5 5 0 0 0-9.6-1.5A4 4 0 0 0 12 19z" fill="#FFFFFF"/>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="sections-mobile-toggle" class="ui-button ui-button--ghost sections-mobile-toggle" type="button" aria-label="Toggle mobile menu" aria-expanded="false" style="padding: 6px 10px;">
+          <svg class="mobile-toggle-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg class="mobile-toggle-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Navigation Drawer -->
+      <nav id="sections-mobile-menu" class="sections-mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+        <div class="sections-mobile-menu-inner">
+          <a href="/" class="sections-mobile-nav-item">
+            <svg class="lucide lucide-arrow-left" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            <span>Home Overview</span>
+          </a>
+          <a href="/pages/components.html" class="sections-mobile-nav-item">
+            <svg class="lucide lucide-layers" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+            <span>Components (40 Primitives)</span>
+          </a>
+          <a href="https://github.com/zakiuhh/hush-ui" target="_blank" rel="noreferrer" class="sections-mobile-nav-item">
+            <svg class="lucide lucide-github" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3.5 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>
+          </svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 2. Hero & Filter Controls -->
+    <section class="sections-hero-section">
+      <div>
+        <h1 class="sections-hero-title">Pre-Made Website Sections</h1>
+        <p class="sections-hero-subtitle">
+          Production-grade, fully responsive layout templates engineered with Hush UI tokens, GPU spring physics, and clean copyable HTML/CSS/JS.
+        </p>
+      </div>
+
+      <!-- Search & Category Filters -->
+      <div class="sections-controls-container">
+        <div class="sections-search-bar">
+          <svg class="search-icon" style="position:absolute; left:14px; color:var(--muted-foreground);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input
+            type="search"
+            id="sections-search"
+            class="sections-search-input"
+            placeholder="Search pre-made sections (e.g. pricing, case-study, hero, bento, faq, cta...)"
+            autocomplete="off"
+            aria-label="Search sections"
+          />
+          <button id="sections-search-clear" class="search-clear-btn" type="button" aria-label="Clear search" style="display: none; position:absolute; right:12px;">
+            <svg class="lucide lucide-x" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="sections-filter-bar" id="sections-category-filters" role="tablist" aria-label="Filter sections by category"></div>
+      </div>
+    </section>
+
+    <!-- 3. Results Summary -->
+    <div class="catalog-results-bar">
+      <span id="sections-count-text">Showing 26 sections</span>
+      <span class="results-hint">Click any section card to test responsive frames & copy code</span>
+    </div>
+
+    <!-- 4. Sections Catalog Grid -->
+    <main>
+      <div id="sections-grid" class="sections-grid"></div>
+
+      <!-- Empty State -->
+      <div id="sections-empty-state" class="catalog-empty-state" style="display: none;">
+        <div class="empty-state-icon">
+          <svg class="lucide lucide-search" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h3 class="empty-state-title">No matching sections</h3>
+        <p class="empty-state-desc">Try searching for something else or clear your filter.</p>
+        <button id="sections-empty-reset" class="ui-button ui-button--secondary" style="margin-top: 8px;">
+          Reset Filters
+        </button>
+      </div>
+    </main>
+
+    <!-- 5. Footer -->
+    <footer class="sections-footer">
+      <div class="footer-left">
+        <span>Hush UI Sections Suite (26+ Templates)</span>
+        <span>·</span>
+        <span>100% Responsive Primitives</span>
+      </div>
+      <div class="footer-right">
+        <a href="/" class="ui-link ui-link--muted ui-link--underline">Home Overview</a>
+        <a href="/pages/components.html" class="ui-link ui-link--muted ui-link--underline">Components (40)</a>
+        <a href="#top" class="ui-link ui-link--muted ui-link--arrow">
+          <span>Back to Top</span>
+          <svg class="lucide lucide-arrow-up" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- FULLSCREEN SECTION INSPECTOR MODAL -->
+  <div id="sec-inspector-modal" class="sec-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="sec-modal-title">
+    <div class="sec-modal-window">
+      
+      <!-- Modal Header -->
+      <div class="sec-modal-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span id="sec-modal-badge" class="ui-catalog-badge">Category</span>
+          <h2 id="sec-modal-title" style="font-size:var(--text-base); font-weight:700; margin:0;">Section Title</h2>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+          <!-- Viewport Switcher -->
+          <div class="sec-viewport-controls" aria-label="Responsive Frame Viewport">
+            <button class="sec-viewport-btn is-active" data-sec-viewport="desktop" title="Desktop Frame (1140px)">
+              <svg class="lucide lucide-monitor" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+              <span>Desktop</span>
+            </button>
+            <button class="sec-viewport-btn" data-sec-viewport="tablet" title="Tablet Frame (768px)">
+              <svg class="lucide lucide-tablet" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="12" x2="12.01" y1="18" y2="18"/></svg>
+              <span>Tablet</span>
+            </button>
+            <button class="sec-viewport-btn" data-sec-viewport="mobile" title="Mobile Frame (375px)">
+              <svg class="lucide lucide-smartphone" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><line x1="12" x2="12.01" y1="18" y2="18"/></svg>
+              <span>Mobile</span>
+            </button>
+          </div>
+
+          <!-- View Mode Switcher (Preview vs Code) -->
+          <div class="ui-view-switcher" role="tablist" style="margin:0;">
+            <button class="ui-view-tab-btn is-active" data-sec-view="preview" role="tab" aria-selected="true" type="button">
+              <span class="view-tab-icon">
+                <svg class="lucide lucide-sparkles" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+              </span>
+              <span>Preview</span>
+            </button>
+            <button class="ui-view-tab-btn" data-sec-view="code" role="tab" aria-selected="false" type="button">
+              <span class="view-tab-icon">
+                <svg class="lucide lucide-code" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </span>
+              <span>Code</span>
+            </button>
+          </div>
+
+          <!-- Close Modal -->
+          <button class="ui-button ui-button--ghost inspector-close-btn" data-sec-modal-close aria-label="Close modal (Escape)" style="padding:6px 12px; font-size:11px; gap:4px;">
+            <svg class="lucide lucide-x" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            <kbd class="ui-kbd" style="font-size:9px;">Esc</kbd>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body (Preview Canvas or Code Inspector) -->
+      <div id="sec-pane-preview" class="sec-modal-stage-wrapper">
+        <div id="sec-responsive-frame" class="sec-responsive-frame frame-desktop">
+          <div id="sec-modal-stage"></div>
+        </div>
+      </div>
+
+      <div id="sec-pane-code" class="ui-code-panel" style="display:none; flex:1; overflow:hidden; flex-direction:column;">
+        <div class="ui-code-toolbar">
+          <div class="ui-code-tabs" role="tablist">
+            <button class="ui-code-tab-btn is-active" data-sec-tab="html" type="button">
+              <span class="tab-lang-dot tab-lang-dot--html"></span>
+              HTML
+            </button>
+            <button class="ui-code-tab-btn" data-sec-tab="css" type="button">
+              <span class="tab-lang-dot tab-lang-dot--css"></span>
+              CSS
+            </button>
+            <button class="ui-code-tab-btn" data-sec-tab="js" type="button">
+              <span class="tab-lang-dot tab-lang-dot--js"></span>
+              JavaScript
+            </button>
+          </div>
+          <div class="ui-code-actions">
+            <button id="sec-copy-btn" class="ui-button ui-button--primary copy-code-btn" type="button" style="gap:6px;">
+              <svg class="lucide lucide-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              <span>Copy Code</span>
+            </button>
+          </div>
+        </div>
+        <pre class="ui-code-view" style="flex:1; margin:0; max-height:none;"><code id="sec-modal-code"></code></pre>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="/src/pages/sections.js"></script>
+</body>
+</html>

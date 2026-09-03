@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Components Directory — Hush UI</title>
+
+  <!-- Google Fonts: Fraunces, Manrope, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Master Stylesheet Entry -->
+  <link rel="stylesheet" href="/src/index.css" />
+</head>
+<body class="components-page-body">
+
+  <div class="components-page-wrapper">
+
+    <!-- 1. Top Navigation Bar -->
+    <header class="components-top-nav">
+      <div class="components-nav-left">
+        <a href="/" class="ui-button ui-button--ghost components-back-btn" style="gap: 6px;">
+          <svg class="lucide lucide-arrow-left" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          <span>Home</span>
+        </a>
+        <div class="components-brand-badge">
+          <span class="brand-sparkle" aria-hidden="true">
+            <svg class="lucide lucide-sparkles" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          </span>
+          <span class="brand-name">Hush UI</span>
+          <span class="brand-sep comp-desktop-only">/</span>
+          <span class="brand-page comp-desktop-only">Components</span>
+        </div>
+      </div>
+
+      <div class="components-nav-right">
+        <a href="/pages/sections.html" class="ui-button ui-button--ghost comp-desktop-only" style="font-size: var(--text-xs); padding: 6px 14px; gap: 6px;">
+          <svg class="lucide lucide-grid" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
+          </svg>
+          <span>Sections (26+)</span>
+        </a>
+
+        <a href="https://github.com/zakiuhh/hush-ui" target="_blank" rel="noreferrer" class="ui-button ui-button--ghost comp-desktop-only" style="font-size: var(--text-xs); padding: 6px 12px; gap: 6px;" title="View repository on GitHub">
+          <svg class="lucide lucide-github" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3.5 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+
+        <div class="components-count-pill comp-desktop-only" id="header-count-pill">
+          <span class="count-dot"></span>
+          <span id="component-count-badge">40 Components</span>
+        </div>
+
+        <!-- Sky Morphing Theme Toggle -->
+        <button id="theme-btn" class="ui-theme-toggle" type="button" aria-label="Toggle light and dark theme">
+          <div class="ui-theme-stars" aria-hidden="true">
+            <span class="ui-star ui-star--1"></span>
+            <span class="ui-star ui-star--2"></span>
+            <span class="ui-star ui-star--3"></span>
+            <span class="ui-star ui-star--4"></span>
+          </div>
+          <div class="ui-theme-orb" aria-hidden="true">
+            <span class="ui-moon-crater ui-moon-crater--1"></span>
+            <span class="ui-moon-crater ui-moon-crater--2"></span>
+            <span class="ui-moon-crater ui-moon-crater--3"></span>
+          </div>
+          <svg class="ui-theme-cloud" viewBox="0 0 34 22" fill="none" aria-hidden="true">
+            <path d="M7 19h20a5 5 0 0 0 1.2-9.85A6.5 6.5 0 0 0 16 6a6.5 6.5 0 0 0-6.1 4.2A5 5 0 0 0 7 19z" fill="#FFFFFF" fill-opacity="0.92"/>
+            <path d="M12 19h14a4 4 0 0 0 0-8 5 5 0 0 0-9.6-1.5A4 4 0 0 0 12 19z" fill="#FFFFFF"/>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="components-mobile-toggle" class="ui-button ui-button--ghost components-mobile-toggle" type="button" aria-label="Toggle mobile menu" aria-expanded="false" style="padding: 6px 10px;">
+          <svg class="mobile-toggle-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg class="mobile-toggle-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Navigation Drawer -->
+      <nav id="components-mobile-menu" class="components-mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+        <div class="components-mobile-menu-inner">
+          <a href="/" class="components-mobile-nav-item">
+            <svg class="lucide lucide-arrow-left" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            <span>Home Overview</span>
+          </a>
+          <a href="/pages/sections.html" class="components-mobile-nav-item">
+            <svg class="lucide lucide-grid" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+            <span>Sections (26+ Templates)</span>
+          </a>
+          <a href="https://github.com/zakiuhh/hush-ui" target="_blank" rel="noreferrer" class="components-mobile-nav-item">
+            <svg class="lucide lucide-github" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3.5 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>
+          </svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 2. Hero & Catalog Controls -->
+    <section class="catalog-hero-section">
+      <div class="catalog-hero-header">
+        <h1 class="catalog-hero-title">Component Catalog</h1>
+        <p class="catalog-hero-desc">Interactive sandbox and code explorer for all 40 Hush UI primitives.</p>
+      </div>
+
+      <!-- Search & Category Filters -->
+      <div class="catalog-controls-container">
+        <!-- Search Input Bar -->
+        <div class="catalog-search-bar">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="8.5" cy="8.5" r="5.5" />
+            <line x1="12.5" y1="12.5" x2="17" y2="17" stroke-linecap="round" />
+          </svg>
+          <input
+            type="search"
+            id="catalog-search"
+            class="catalog-search-input"
+            placeholder="Search 40 components (e.g. segmented, color-picker, dropzone, code-block...)"
+            autocomplete="off"
+            aria-label="Search components"
+          />
+          <button id="search-clear-btn" class="search-clear-btn" type="button" aria-label="Clear search" style="display: none;">
+            <svg class="lucide lucide-x" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+          <div class="search-kbd-shortcut" aria-hidden="true">
+            <kbd class="ui-kbd">/</kbd>
+          </div>
+        </div>
+
+        <!-- Category Filter Pills Bar -->
+        <div class="catalog-filter-bar" id="category-filters" role="tablist" aria-label="Filter components by category">
+          <!-- Dynamically populated via components.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Results Summary -->
+    <div class="catalog-results-bar">
+      <span id="results-count-text">Showing 40 components</span>
+      <span class="results-hint">Click any card to inspect code and live controls</span>
+    </div>
+
+    <!-- 4. Component Card Grid -->
+    <main>
+      <div id="catalog-grid" class="ui-catalog-grid"></div>
+
+      <!-- Empty State -->
+      <div id="catalog-empty-state" class="catalog-empty-state" style="display: none;">
+        <div class="empty-state-icon">
+          <svg class="lucide lucide-search" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h3 class="empty-state-title">No matching components</h3>
+        <p class="empty-state-desc" id="empty-state-desc">Try searching for something else or clear your filter.</p>
+        <button id="empty-reset-btn" class="ui-button ui-button--secondary" style="margin-top: 8px;">
+          Reset Filters
+        </button>
+      </div>
+    </main>
+
+    <!-- 5. Footer -->
+    <footer class="components-footer">
+      <div class="footer-left">
+        <span>Hush UI Component Suite (40 Primitives)</span>
+        <span>·</span>
+        <span>Pure CSS & Vanilla JavaScript</span>
+      </div>
+      <div class="footer-right">
+        <a href="/" class="ui-link ui-link--muted ui-link--underline">Home Overview</a>
+        <a href="/pages/sections.html" class="ui-link ui-link--muted ui-link--underline">Pre-Made Sections (26+)</a>
+        <a href="#top" class="ui-link ui-link--muted ui-link--arrow">
+          <span>Back to Top</span>
+          <svg class="lucide lucide-arrow-up" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- INSPECTOR MODAL WINDOW -->
+  <div id="inspector-modal" class="ui-inspector-backdrop" role="dialog" aria-modal="true" aria-labelledby="inspector-title" aria-describedby="inspector-desc">
+    <div class="ui-inspector-window">
+
+      <!-- Window Title Bar & Actions -->
+      <div class="ui-inspector-header">
+        <div class="inspector-header-info">
+          <h2 id="inspector-title" class="inspector-title">Component</h2>
+          <p id="inspector-desc" class="inspector-desc">Description</p>
+        </div>
+
+        <div class="inspector-header-actions">
+          <!-- Toggle Controls Sidebar Button -->
+          <button id="sidebar-toggle-btn" class="ui-button ui-button--secondary inspector-sidebar-toggle is-active" type="button" aria-label="Toggle Controls Sidebar (O)" title="Toggle Controls & Knobs Sidebar (O)">
+            <svg class="lucide lucide-sliders" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/>
+            </svg>
+            <span>Controls</span>
+            <kbd class="ui-kbd" style="font-size: 9px; margin-left: 2px;">O</kbd>
+          </button>
+
+          <!-- Prev / Next Component Quick Navigation -->
+          <div class="inspector-nav-group">
+            <button id="inspector-prev-btn" class="inspector-nav-btn" title="Previous component (Left arrow)" aria-label="Previous component">
+              <svg class="lucide lucide-arrow-left" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            </button>
+            <span id="inspector-index-text" class="inspector-index-text">1 / 40</span>
+            <button id="inspector-next-btn" class="inspector-nav-btn" title="Next component (Right arrow)" aria-label="Next component">
+              <svg class="lucide lucide-arrow-right" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <!-- Close Modal Button -->
+          <button class="ui-button ui-button--ghost inspector-close-btn" data-inspector-close aria-label="Close modal (Escape)" title="Close modal (Escape)">
+            <svg class="lucide lucide-x" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            <kbd class="ui-kbd inspector-close-kbd" style="font-size: 9px; margin-left: 4px;">Esc</kbd>
+          </button>
+        </div>
+      </div>
+
+      <!-- Window Main Layout (Stage + Collapsible Sidebar) -->
+      <div class="ui-inspector-main-layout">
+
+        <!-- Left / Center: Primary Stage & Code Area -->
+        <div class="ui-inspector-stage-area">
+
+          <!-- Top-Level Primary View Switcher (Preview vs Code) -->
+          <div class="ui-view-switcher" role="tablist" aria-label="View Mode">
+            <button class="ui-view-tab-btn is-active" data-view="preview" role="tab" aria-selected="true" type="button">
+              <span class="view-tab-icon">
+                <svg class="lucide lucide-sparkles" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+              </span>
+              <span>Preview</span>
+            </button>
+            <button class="ui-view-tab-btn" data-view="code" role="tab" aria-selected="false" type="button">
+              <span class="view-tab-icon">
+                <svg class="lucide lucide-code" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </span>
+              <span>Code</span>
+            </button>
+          </div>
+
+          <!-- PANE 1: Live Stage Canvas View -->
+          <div id="pane-preview" class="inspector-view-pane is-active">
+            <div class="inspector-stage-container">
+              <div id="inspector-stage-wrapper" class="ui-inspector-stage-wrapper">
+                <div id="inspector-stage" class="ui-inspector-stage"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANE 2: Tabbed Source Code View -->
+          <div id="pane-code" class="inspector-view-pane">
+            <div class="ui-code-panel">
+              <div class="ui-code-toolbar">
+                <div class="ui-code-tabs" role="tablist">
+                  <button class="ui-code-tab-btn is-active" data-tab="html" role="tab" aria-selected="true" type="button">
+                    <span class="tab-lang-dot tab-lang-dot--html"></span>
+                    HTML
+                  </button>
+                  <button class="ui-code-tab-btn" data-tab="css" role="tab" aria-selected="false" type="button">
+                    <span class="tab-lang-dot tab-lang-dot--css"></span>
+                    CSS
+                  </button>
+                  <button class="ui-code-tab-btn" id="js-code-tab-btn" data-tab="js" role="tab" aria-selected="false" type="button">
+                    <span class="tab-lang-dot tab-lang-dot--js"></span>
+                    JavaScript
+                  </button>
+                </div>
+
+                <div class="ui-code-actions">
+                  <span id="code-meta-badge" class="code-meta-badge">HTML Element</span>
+                  <button id="copy-code-btn" class="ui-button ui-button--primary copy-code-btn" type="button" aria-label="Copy code" style="gap: 6px;">
+                    <svg class="lucide lucide-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                    </svg>
+                    <span id="copy-btn-text">Copy Code</span>
+                  </button>
+                </div>
+              </div>
+
+              <pre class="ui-code-view"><code id="inspector-code"></code></pre>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Collapsible Studio Controls Sidebar -->
+        <aside id="inspector-sidebar" class="ui-inspector-sidebar" aria-label="Component Studio Controls">
+          <div class="inspector-sidebar-inner" id="playground-panel">
+
+            <div class="sidebar-header">
+              <div class="sidebar-header-title">
+                <span class="sidebar-dot"></span>
+                <span>Studio Controls</span>
+              </div>
+              <button id="sidebar-close-btn" class="sidebar-close-btn" type="button" title="Collapse sidebar (O)" aria-label="Collapse sidebar">
+                <svg class="lucide lucide-x" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+
+            <!-- SECTION 1: Props Customizer -->
+            <div class="sidebar-section">
+              <span class="sidebar-section-title">Live Props</span>
+
+              <!-- Size Knob -->
+              <div class="sidebar-field">
+                <span class="sidebar-field-label">Size</span>
+                <div class="playground-segmented" data-prop="size">
+                  <button class="playground-btn" data-val="sm" type="button">SM</button>
+                  <button class="playground-btn is-active" data-val="md" type="button">MD</button>
+                  <button class="playground-btn" data-val="lg" type="button">LG</button>
+                </div>
+              </div>
+
+              <!-- Variant Theme Knob -->
+              <div class="sidebar-field">
+                <span class="sidebar-field-label">Variant Theme</span>
+                <div class="playground-segmented playground-segmented--wrap" data-prop="variant">
+                  <button class="playground-btn is-active" data-val="primary" type="button"><span class="swatch-dot swatch-lilac"></span>Lilac</button>
+                  <button class="playground-btn" data-val="secondary" type="button"><span class="swatch-dot swatch-sage"></span>Sage</button>
+                  <button class="playground-btn" data-val="accent" type="button"><span class="swatch-dot swatch-butter"></span>Butter</button>
+                  <button class="playground-btn" data-val="destructive" type="button"><span class="swatch-dot swatch-blush"></span>Blush</button>
+                  <button class="playground-btn" data-val="ghost" type="button">Ghost</button>
+                </div>
+              </div>
+
+              <!-- State Knob -->
+              <div class="sidebar-field">
+                <span class="sidebar-field-label">Interactive State</span>
+                <div class="playground-segmented playground-segmented--wrap" data-prop="state">
+                  <button class="playground-btn is-active" data-val="default" type="button">Default</button>
+                  <button class="playground-btn" data-val="disabled" type="button">Disabled</button>
+                  <button class="playground-btn" data-val="loading" type="button">Loading</button>
+                  <button class="playground-btn" data-val="icon" type="button">With Icon</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 2: Canvas Environment -->
+            <div class="sidebar-section">
+              <span class="sidebar-section-title">Canvas Environment</span>
+
+              <!-- Viewport Width -->
+              <div class="sidebar-field">
+                <span class="sidebar-field-label">Viewport Frame</span>
+                <div class="stage-control-group" title="Preview Frame Width">
+                  <button class="stage-control-btn is-active" data-viewport="full">Full</button>
+                  <button class="stage-control-btn" data-viewport="tablet">Tablet</button>
+                  <button class="stage-control-btn" data-viewport="mobile">Mobile</button>
+                </div>
+              </div>
+
+              <!-- Surface Background -->
+              <div class="sidebar-field">
+                <span class="sidebar-field-label">Surface Texture</span>
+                <div class="stage-control-group" title="Stage Background Pattern">
+                  <button class="stage-control-btn is-active" data-stage-bg="dots">Grid</button>
+                  <button class="stage-control-btn" data-stage-bg="clean">Clean</button>
+                  <button class="stage-control-btn" data-stage-bg="dark">Dark</button>
+                </div>
+              </div>
+
+              <!-- Reset Canvas -->
+              <div class="sidebar-field" style="margin-top: 4px;">
+                <button id="stage-reset-btn" class="ui-button ui-button--ghost stage-reset-btn" style="width: 100%; justify-content: center; font-size: 11px; padding: 6px 10px; gap: 6px;" title="Reset interactive state">
+                  <svg class="lucide lucide-rotate-ccw" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                  <span>Reset Stage Preview</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- SECTION 3: Shortcuts Guide -->
+            <div class="sidebar-section sidebar-section--footer">
+              <span class="sidebar-section-title">Shortcuts</span>
+              <div class="sidebar-shortcuts-list">
+                <div class="sidebar-shortcut-row"><span>Preview / Code</span><div style="display:inline-flex; gap:2px;"><kbd class="ui-kbd">P</kbd><kbd class="ui-kbd">C</kbd></div></div>
+                <div class="sidebar-shortcut-row"><span>Toggle Controls</span><kbd class="ui-kbd">O</kbd></div>
+                <div class="sidebar-shortcut-row"><span>Navigate Prev / Next</span><div style="display:inline-flex; gap:2px;"><kbd class="ui-kbd">←</kbd><kbd class="ui-kbd">→</kbd></div></div>
+                <div class="sidebar-shortcut-row"><span>Close Modal</span><kbd class="ui-kbd">Esc</kbd></div>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/pages/components.js"></script>
+</body>
+</html>

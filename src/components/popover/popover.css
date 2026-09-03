@@ -1,0 +1,49 @@
+/* ==========================================================================
+   ANIMATED POPOVER
+   ========================================================================== */
+
+.ui-popover {
+  position: relative;
+  display: inline-block;
+}
+
+.ui-popover-content {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px) scale(0.95);
+  transform-origin: top center;
+  z-index: var(--z-popover);
+  width: 280px;
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-soft-out),
+              transform var(--duration-fast) var(--ease-spring),
+              visibility var(--duration-fast);
+}
+
+.ui-popover-content.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.ui-popover-header {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-1);
+}
+
+.ui-popover-body {
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  color: var(--muted-foreground);
+}

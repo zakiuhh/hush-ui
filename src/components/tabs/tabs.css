@@ -1,0 +1,84 @@
+.ui-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.ui-tabs-list {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--muted);
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  gap: var(--space-1);
+  align-self: flex-start;
+  user-select: none;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.ui-tabs-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sliding active pill indicator */
+.ui-tab-indicator {
+  position: absolute;
+  top: var(--space-1);
+  left: 0;
+  height: calc(100% - (var(--space-1) * 2));
+  background-color: var(--card);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-xs);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform var(--duration-base) var(--ease-soft-out),
+              width var(--duration-base) var(--ease-soft-out);
+}
+
+.ui-tab-trigger {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--muted-foreground);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-soft-out);
+  outline: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ui-tab-trigger:hover {
+  color: var(--foreground);
+}
+
+.ui-tab-trigger.is-active {
+  color: var(--foreground);
+  font-weight: var(--font-semibold);
+}
+
+/* Tab Content Transitions */
+.ui-tab-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--duration-base) var(--ease-soft-out),
+              transform var(--duration-base) var(--ease-soft-out);
+}
+
+.ui-tab-panel.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}

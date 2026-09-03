@@ -1,0 +1,113 @@
+/* ==========================================================================
+   ANIMATED AVATAR & SPRING STACK GROUP
+   ========================================================================== */
+
+.ui-avatar-group {
+  display: inline-flex;
+  align-items: center;
+  /* Top padding ensures room for the spring lift */
+  padding: 10px 6px 4px 6px;
+}
+
+.ui-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--muted);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  box-shadow: 0 0 0 2.5px var(--card);
+  user-select: none;
+  flex-shrink: 0;
+  cursor: pointer;
+
+  /* GPU acceleration & spring bounce curves */
+  will-change: transform, box-shadow, margin;
+  transition: transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 240ms var(--ease-soft-out),
+              margin 240ms var(--ease-soft-out);
+}
+
+.ui-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
+/* Opaque Hush UI Fills */
+.ui-avatar--lilac {
+  background-color: color-mix(in srgb, var(--primary) 45%, var(--card));
+  color: var(--foreground);
+}
+
+.ui-avatar--sage {
+  background-color: color-mix(in srgb, var(--secondary) 45%, var(--card));
+  color: var(--foreground);
+}
+
+.ui-avatar--blush {
+  background-color: color-mix(in srgb, var(--destructive) 45%, var(--card));
+  color: var(--foreground);
+}
+
+.ui-avatar--butter {
+  background-color: color-mix(in srgb, var(--accent) 45%, var(--card));
+  color: var(--foreground);
+}
+
+/* Active Status Dot */
+.ui-avatar-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: var(--radius-full);
+  background-color: var(--secondary);
+  box-shadow: 0 0 0 2px var(--card);
+  z-index: 3;
+}
+
+/* Default Stacking Spacing */
+.ui-avatar-group .ui-avatar {
+  margin-left: -12px;
+}
+
+.ui-avatar-group .ui-avatar:first-child {
+  margin-left: 0;
+}
+
+/* 1. Accordion Fan-Out: avatars breathe apart slightly on group hover */
+.ui-avatar-group:hover .ui-avatar {
+  margin-left: -6px;
+}
+
+.ui-avatar-group:hover .ui-avatar:first-child {
+  margin-left: 0;
+}
+
+/* 2. Spring Pop Lift for the targeted avatar */
+.ui-avatar-group .ui-avatar:hover {
+  z-index: 10;
+  transform: translateY(-8px) scale(1.18);
+  box-shadow: 0 0 0 3px var(--card), 0 10px 24px -2px rgba(58, 53, 65, 0.26);
+}
+
+/* Dark Mode Tinted Lift Shadow */
+.dark .ui-avatar-group .ui-avatar:hover {
+  box-shadow: 0 0 0 3px var(--card), 0 10px 24px -2px rgba(0, 0, 0, 0.65);
+}
+
+/* 3. Micro-press click feedback */
+.ui-avatar-group .ui-avatar:active {
+  transform: translateY(-4px) scale(1.08);
+  transition-duration: 120ms;
+}
