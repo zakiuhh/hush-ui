@@ -20,7 +20,18 @@ import {
   initRatings,
   initSegmentedControls,
   initColorPickers,
-  initContextMenu
+  initContextMenu,
+  initOtpInput,
+  initAudioPlayer,
+  initTagInput,
+  initPasswordMeter,
+  initDatePicker,
+  initInlineEdit,
+  initToc,
+  initPagination,
+  initSparkline,
+  initMetricTile,
+  initCarousel
 } from '../index.js';
 
 // Expose toast triggers for interactive preview demos
@@ -468,6 +479,17 @@ document.addEventListener('DOMContentLoaded', () => {
     initSegmentedControls(stage);
     initColorPickers(stage);
     initContextMenu(stage);
+    initOtpInput(stage);
+    initAudioPlayer(stage);
+    initTagInput(stage);
+    initPasswordMeter(stage);
+    initDatePicker(stage);
+    initInlineEdit(stage);
+    initToc(stage);
+    initPagination(stage);
+    initSparkline(stage);
+    initMetricTile(stage);
+    initCarousel(stage);
   }
 
   // Open Inspector Modal

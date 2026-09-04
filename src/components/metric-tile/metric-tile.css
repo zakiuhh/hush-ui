@@ -1,0 +1,179 @@
+/* ==========================================================================
+   HUSH UI - HIGH-DENSITY METRIC TILE
+   ========================================================================== */
+
+.ui-metric-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms ease;
+  user-select: none;
+  font-family: var(--font-sans);
+  overflow: hidden;
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
+}
+
+.ui-metric-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+}
+
+/* Header: Label & Timeframe Selector */
+.ui-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ui-metric-label-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ui-metric-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm, 6px);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.ui-metric-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.ui-metric-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* Timeframe Pill Switcher */
+.ui-metric-periods {
+  display: inline-flex;
+  background: var(--muted);
+  padding: 2px;
+  border-radius: var(--radius-sm, 6px);
+  gap: 2px;
+}
+
+.ui-metric-period-btn {
+  background: transparent;
+  border: none;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  padding: 3px 7px;
+  border-radius: calc(var(--radius-sm, 6px) - 2px);
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+  font-family: inherit;
+  line-height: 1.2;
+}
+
+.ui-metric-period-btn:hover {
+  color: var(--foreground);
+}
+
+.ui-metric-period-btn.is-active {
+  background: var(--card);
+  color: var(--foreground);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Body: Value & Trend Badge */
+.ui-metric-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.ui-metric-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ui-metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--foreground);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.ui-metric-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  line-height: 1.2;
+  transition: all 150ms ease;
+}
+
+.ui-metric-trend svg {
+  width: 12px;
+  height: 12px;
+}
+
+.ui-metric-trend--positive {
+  background-color: color-mix(in srgb, var(--sage, #2e7d32) 15%, transparent);
+  color: var(--sage, #2e7d32);
+}
+
+.ui-metric-trend--negative {
+  background-color: color-mix(in srgb, var(--blush, #c62828) 15%, transparent);
+  color: var(--blush, #c62828);
+}
+
+.ui-metric-trend--neutral {
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.ui-metric-subtitle {
+  font-size: 12px;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* Footer Chart / Sparkline Area */
+.ui-metric-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+}
+
+.ui-metric-tile .ui-sparkline {
+  height: 48px;
+  max-width: 100%;
+}

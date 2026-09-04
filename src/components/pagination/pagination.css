@@ -1,0 +1,121 @@
+/* ==========================================================================
+   HUSH UI - TACTILE PAGINATION BAR
+   ========================================================================== */
+
+.ui-pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  flex-wrap: wrap;
+  user-select: none;
+}
+
+.ui-pagination-track {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full, 9999px);
+  padding: 4px;
+  box-shadow: var(--shadow-xs);
+}
+
+.ui-pagination-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--foreground);
+  font-size: var(--text-xs, 12px);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration-fast, 150ms) var(--spring-hover);
+}
+
+.ui-pagination-btn:hover:not(:disabled):not(.is-active) {
+  background-color: var(--muted);
+  color: var(--foreground);
+  transform: translateY(-1px);
+}
+
+.ui-pagination-btn.is-active {
+  background-color: var(--primary);
+  color: var(--primary-foreground, #FFFFFF);
+  box-shadow: var(--shadow-xs);
+}
+
+.ui-pagination-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.ui-pagination-btn--nav {
+  color: var(--muted-foreground);
+}
+
+.ui-pagination-btn--nav:hover:not(:disabled) {
+  color: var(--foreground);
+  background-color: var(--muted);
+}
+
+.ui-pagination-ellipsis {
+  width: 24px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+/* Page Summary & Jumper */
+.ui-pagination-info {
+  font-size: var(--text-xs, 12px);
+  color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ui-pagination-jump {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs, 12px);
+  color: var(--muted-foreground);
+}
+
+.ui-pagination-input {
+  width: 44px;
+  padding: 4px 6px;
+  font-size: 11px;
+  text-align: center;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm, 6px);
+  color: var(--foreground);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.ui-pagination-input:focus {
+  border-color: var(--primary);
+}
+
+.ui-pagination-size {
+  padding: 4px 8px;
+  font-size: 11px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm, 6px);
+  color: var(--foreground);
+  cursor: pointer;
+  outline: none;
+}

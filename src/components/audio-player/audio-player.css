@@ -1,0 +1,168 @@
+﻿/* --- Hush UI: Audio & Waveform Player Widget --- */
+.ui-audio-player {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  padding: clamp(12px, 3vw, 18px);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.04));
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ui-audio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ui-audio-track-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ui-audio-cover {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm, 8px);
+  background: linear-gradient(135deg, var(--lilac, #C9B8DB), var(--sage, #B8D8D0));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1E1B24;
+  flex-shrink: 0;
+}
+
+.ui-audio-meta {
+  min-width: 0;
+}
+
+.ui-audio-title {
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 700;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-audio-artist {
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Waveform Visualizer Rail */
+.ui-audio-waveform-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(2px, 0.8vw, 4px);
+  height: 48px;
+  padding: 4px 8px;
+  background-color: color-mix(in srgb, var(--muted) 45%, transparent);
+  border-radius: var(--radius-md, 10px);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.ui-waveform-bar {
+  flex: 1;
+  min-width: 3px;
+  max-width: 6px;
+  border-radius: 3px;
+  background-color: color-mix(in srgb, var(--muted-foreground) 35%, transparent);
+  transition: height 180ms ease, background-color 150ms ease, transform 150ms var(--spring-hover);
+  transform-origin: bottom center;
+}
+
+.ui-waveform-bar.is-played {
+  background-color: var(--primary);
+}
+
+.ui-audio-player.is-playing .ui-waveform-bar.is-played {
+  animation: waveform-pulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes waveform-pulse {
+  0% { transform: scaleY(0.75); }
+  100% { transform: scaleY(1.15); }
+}
+
+/* Player Controls Bar */
+.ui-audio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ui-audio-play-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full, 9999px);
+  background-color: var(--primary);
+  color: var(--primary-foreground, #FFFFFF);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--duration-fast, 150ms) var(--spring-hover), opacity 150ms ease;
+  flex-shrink: 0;
+}
+
+.ui-audio-play-btn:hover {
+  transform: scale(1.08);
+}
+
+.ui-audio-play-btn:active {
+  transform: scale(0.95);
+}
+
+.ui-audio-play-btn .icon-pause {
+  display: none;
+}
+
+.ui-audio-player.is-playing .ui-audio-play-btn .icon-play {
+  display: none;
+}
+
+.ui-audio-player.is-playing .ui-audio-play-btn .icon-pause {
+  display: block;
+}
+
+.ui-audio-timestamps {
+  font-family: var(--font-mono, monospace);
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+
+.ui-audio-volume-btn {
+  background: none;
+  border: none;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-sm, 6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.ui-audio-volume-btn:hover {
+  color: var(--foreground);
+  background-color: var(--muted);
+}

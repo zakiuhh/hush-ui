@@ -2706,6 +2706,499 @@ window.updateRoiCalc = updateRoiCalc;`
   }
 }`,
     js: `// Static case study hero layout.`
+  },
+  {
+    id: 'onboarding-wizard',
+    name: 'Multi-Step Onboarding Wizard',
+    category: 'Forms',
+    description: 'Interactive 3-step setup flow with progress track, input validation, integration selectors, and celebratory completion state.',
+    cardPreview: `
+      <div style="display:flex; flex-direction:column; gap:4px; width:100%; max-width:130px; font-size:8px; background:var(--card); padding:8px; border:var(--border-default); border-radius:6px;">
+        <div style="display:flex; gap:3px;">
+          <span style="flex:1; height:3px; border-radius:2px; background:var(--primary);"></span>
+          <span style="flex:1; height:3px; border-radius:2px; background:var(--muted);"></span>
+          <span style="flex:1; height:3px; border-radius:2px; background:var(--muted);"></span>
+        </div>
+        <div style="font-weight:700; color:var(--foreground); margin-top:2px;">Step 1: Workspace</div>
+        <div style="height:10px; background:var(--muted); border-radius:3px;"></div>
+      </div>
+    `,
+    previewMarkup: `
+      <section class="sec-wizard-section" style="padding: clamp(24px, 5vw, 64px) 16px; max-width: 720px; margin: 0 auto;">
+        <div class="sec-wizard-card">
+          <!-- Wizard Stepper Header -->
+          <div class="sec-wizard-stepper">
+            <div class="sec-step-item is-active" data-step="1">
+              <div class="sec-step-number">1</div>
+              <span class="sec-step-title">Workspace</span>
+            </div>
+            <div class="sec-step-line"></div>
+            <div class="sec-step-item" data-step="2">
+              <div class="sec-step-number">2</div>
+              <span class="sec-step-title">Team</span>
+            </div>
+            <div class="sec-step-line"></div>
+            <div class="sec-step-item" data-step="3">
+              <div class="sec-step-number">3</div>
+              <span class="sec-step-title">Integrations</span>
+            </div>
+          </div>
+
+          <!-- Step 1 Pane: Workspace Details -->
+          <div class="sec-wizard-pane is-active" data-pane="1">
+            <h3 class="sec-pane-title">Create your workspace</h3>
+            <p class="sec-pane-subtitle">Give your team a dedicated space to collaborate with Hush UI.</p>
+            <div class="sec-form-group">
+              <label class="ui-label">Workspace Name</label>
+              <input type="text" class="ui-input" id="wizard-ws-name" value="Acme Design Studio" placeholder="e.g. Acme Design Studio" />
+            </div>
+            <div class="sec-form-group">
+              <label class="ui-label">Workspace URL</label>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span style="font-size:var(--text-xs); color:var(--muted-foreground);">hushui.com/</span>
+                <input type="text" class="ui-input" value="acme-design" placeholder="acme" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 Pane: Invite Team -->
+          <div class="sec-wizard-pane" data-pane="2">
+            <h3 class="sec-pane-title">Invite your teammates</h3>
+            <p class="sec-pane-subtitle">Add members by email to start building together right away.</p>
+            <div class="sec-form-group">
+              <label class="ui-label">Teammate Email Addresses</label>
+              <input type="email" class="ui-input" placeholder="colleague@acme.com" value="alex@acme.com, sarah@acme.com" />
+              <span style="font-size:11px; color:var(--muted-foreground);">Separate multiple emails with commas.</span>
+            </div>
+            <div class="sec-form-group">
+              <label class="ui-label">Default Role</label>
+              <select class="ui-input" style="cursor:pointer;">
+                <option>Editor (Full Access)</option>
+                <option>Viewer (Read Only)</option>
+                <option>Admin (Workspace Owner)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Step 3 Pane: Integrations -->
+          <div class="sec-wizard-pane" data-pane="3">
+            <h3 class="sec-pane-title">Connect tools</h3>
+            <p class="sec-pane-subtitle">Select the apps you want to sync with your components.</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin: 16px 0;">
+              <label style="display:flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--card); cursor:pointer;">
+                <input type="checkbox" checked />
+                <span style="font-size:var(--text-xs); font-weight:600;">GitHub Sync</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--card); cursor:pointer;">
+                <input type="checkbox" checked />
+                <span style="font-size:var(--text-xs); font-weight:600;">Figma Tokens</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--card); cursor:pointer;">
+                <input type="checkbox" />
+                <span style="font-size:var(--text-xs); font-weight:600;">Slack Alerts</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Footer Actions -->
+          <div class="sec-wizard-footer">
+            <button type="button" class="ui-button ui-button--ghost sec-wizard-prev-btn" style="visibility:hidden;">Back</button>
+            <button type="button" class="ui-button ui-button--primary sec-wizard-next-btn">Continue</button>
+          </div>
+        </div>
+      </section>
+    `,
+    html: `<!-- Multi-Step Onboarding Wizard Section -->
+<section class="sec-wizard-section">
+  <div class="sec-wizard-card">
+    <div class="sec-wizard-stepper">
+      <div class="sec-step-item is-active" data-step="1">
+        <div class="sec-step-number">1</div>
+        <span>Workspace</span>
+      </div>
+      <div class="sec-step-line"></div>
+      <div class="sec-step-item" data-step="2">
+        <div class="sec-step-number">2</div>
+        <span>Team</span>
+      </div>
+      <div class="sec-step-line"></div>
+      <div class="sec-step-item" data-step="3">
+        <div class="sec-step-number">3</div>
+        <span>Integrations</span>
+      </div>
+    </div>
+
+    <!-- Panes -->
+    <div class="sec-wizard-pane is-active" data-pane="1">
+      <h3>Create your workspace</h3>
+      <input type="text" class="ui-input" placeholder="Workspace name" />
+    </div>
+
+    <div class="sec-wizard-footer">
+      <button class="ui-button ui-button--ghost sec-wizard-prev-btn">Back</button>
+      <button class="ui-button ui-button--primary sec-wizard-next-btn">Continue</button>
+    </div>
+  </div>
+</section>`,
+    css: `.sec-wizard-section {
+  padding: clamp(24px, 5vw, 64px) 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sec-wizard-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl, 20px);
+  padding: clamp(20px, 4vw, 36px);
+  box-shadow: var(--shadow-md);
+}
+.sec-wizard-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.sec-step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+.sec-step-item.is-active {
+  color: var(--primary);
+}
+.sec-step-number {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background-color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sec-step-item.is-active .sec-step-number {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+.sec-step-line {
+  flex: 1;
+  height: 2px;
+  background-color: var(--border);
+  margin: 0 8px;
+}
+.sec-wizard-pane {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+.sec-wizard-pane.is-active {
+  display: flex;
+}
+.sec-wizard-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+}`,
+    js: `// Multi-step wizard navigation controller
+const wizard = document.querySelector('.sec-wizard-section');
+if (wizard) {
+  let step = 1;
+  const nextBtn = wizard.querySelector('.sec-wizard-next-btn');
+  const prevBtn = wizard.querySelector('.sec-wizard-prev-btn');
+
+  function update() {
+    wizard.querySelectorAll('.sec-step-item').forEach(el => {
+      const s = parseInt(el.dataset.step, 10);
+      el.classList.toggle('is-active', s === step);
+    });
+    wizard.querySelectorAll('.sec-wizard-pane').forEach(el => {
+      const p = parseInt(el.dataset.pane, 10);
+      el.classList.toggle('is-active', p === step);
+    });
+    prevBtn.style.visibility = step > 1 ? 'visible' : 'hidden';
+    nextBtn.textContent = step === 3 ? 'Finish Setup' : 'Continue';
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (step < 3) { step++; update(); }
+    else alert('Workspace setup complete!');
+  });
+  prevBtn.addEventListener('click', () => {
+    if (step > 1) { step--; update(); }
+  });
+}`
+  },
+  {
+    id: 'testimonial-wall',
+    name: 'Customer Wall of Love & Testimonials',
+    category: 'Social Proof',
+    description: 'Authentic 3-column responsive review grid featuring customer ratings, verified reviewer profiles, and category filters.',
+    cardPreview: `
+      <div style="display:flex; flex-direction:column; gap:5px; width:100%; max-width:130px; font-size:7px; background:var(--card); padding:8px; border:var(--border-default); border-radius:6px; box-sizing:border-box;">
+        <div style="color:#F59E0B; font-size:8px; letter-spacing:1px;">★★★★★</div>
+        <div style="font-size:7.5px; font-weight:600; color:var(--foreground); line-height:1.25;">"Cut bundle size by 84%"</div>
+        <div style="font-size:6.5px; color:var(--muted-foreground);">Elena Rostova · Veloce</div>
+      </div>
+    `,
+    previewMarkup: `
+      <section class="sec-wall-section">
+        <!-- Header -->
+        <div class="sec-wall-header">
+          <span class="ui-catalog-badge">Wall of Love</span>
+          <h2 class="sec-wall-title">
+            Trusted by Leading Product Teams
+          </h2>
+          <p class="sec-wall-subtitle">
+            See how engineers, designers, and founders use Hush UI to craft calm, high-performance interfaces.
+          </p>
+
+          <!-- Interactive Filter Tabs -->
+          <div class="sec-wall-filters">
+            <button type="button" class="sec-wall-filter-btn is-active" data-filter="all">All Reviews (6)</button>
+            <button type="button" class="sec-wall-filter-btn" data-filter="engineering">Engineering</button>
+            <button type="button" class="sec-wall-filter-btn" data-filter="design">Design</button>
+            <button type="button" class="sec-wall-filter-btn" data-filter="founders">Founders</button>
+          </div>
+        </div>
+
+        <!-- 3-Column Masonry Grid -->
+        <div class="sec-wall-grid">
+          <!-- Column 1 -->
+          <div class="sec-wall-col">
+            <!-- Review 1 -->
+            <div class="sec-wall-card" data-category="founders">
+              <div class="sec-wall-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="sec-wall-quote">
+                "Hush UI gave our entire product suite an unfair design advantage. Our engineering velocity tripled without adding an ounce of runtime framework debt."
+              </p>
+              <div class="sec-wall-card-footer">
+                <div class="sec-wall-author-group">
+                  <div class="ui-avatar ui-avatar--sage" style="width:36px; height:36px;">MK</div>
+                  <div class="sec-wall-author-details">
+                    <div class="sec-wall-author-name">Marcus Kane</div>
+                    <div class="sec-wall-author-role">Founder @ Stride AI</div>
+                  </div>
+                </div>
+                <span class="sec-wall-tag">Verified Customer</span>
+              </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="sec-wall-card" data-category="engineering">
+              <div class="sec-wall-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="sec-wall-quote">
+                "Replacing bulky React UI libraries with pure CSS Hush UI cut our JavaScript bundle size by 84%. The spring physics are pure delight on mobile devices."
+              </p>
+              <div class="sec-wall-card-footer">
+                <div class="sec-wall-author-group">
+                  <div class="ui-avatar ui-avatar--lilac" style="width:36px; height:36px;">ER</div>
+                  <div class="sec-wall-author-details">
+                    <div class="sec-wall-author-name">Elena Rostova</div>
+                    <div class="sec-wall-author-role">Lead Frontend @ Veloce</div>
+                  </div>
+                </div>
+                <span class="sec-wall-tag">Frontend</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="sec-wall-col">
+            <!-- Review 3 -->
+            <div class="sec-wall-card" data-category="founders">
+              <div class="sec-wall-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="sec-wall-quote">
+                "The accessible keyboard navigation, focus indicators, and tokenized light/dark theme switching worked out of the box on day one. Our QA pass took zero extra time."
+              </p>
+              <div class="sec-wall-card-footer">
+                <div class="sec-wall-author-group">
+                  <div class="ui-avatar ui-avatar--butter" style="width:36px; height:36px;">JH</div>
+                  <div class="sec-wall-author-details">
+                    <div class="sec-wall-author-name">Julian Hayes</div>
+                    <div class="sec-wall-author-role">Head of Product @ Loomic</div>
+                  </div>
+                </div>
+                <span class="sec-wall-tag">Product Lead</span>
+              </div>
+            </div>
+
+            <!-- Review 4 -->
+            <div class="sec-wall-card" data-category="design">
+              <div class="sec-wall-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="sec-wall-quote">
+                "Finally a UI library that respects typography, pastel aesthetics, and micro-interactions. The spring docks and color pickers feel bespoke and calm."
+              </p>
+              <div class="sec-wall-card-footer">
+                <div class="sec-wall-author-group">
+                  <div class="ui-avatar ui-avatar--blush" style="width:36px; height:36px;">SL</div>
+                  <div class="sec-wall-author-details">
+                    <div class="sec-wall-author-name">Sophia Lin</div>
+                    <div class="sec-wall-author-role">Principal Designer @ Aura</div>
+                  </div>
+                </div>
+                <span class="sec-wall-tag">Design System</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="sec-wall-col">
+            <!-- Review 5 -->
+            <div class="sec-wall-card" data-category="engineering">
+              <div class="sec-wall-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="sec-wall-quote">
+                "I've used Tailwind, Chakra, and Radix. Hush UI is the first system that feels genuinely calm and joyful to write vanilla code in. The components just work."
+              </p>
+              <div class="sec-wall-card-footer">
+                <div class="sec-wall-author-group">
+                  <div class="ui-avatar ui-avatar--sage" style="width:36px; height:36px;">AR</div>
+                  <div class="sec-wall-author-details">
+                    <div class="sec-wall-author-name">Alex Rivera</div>
+                    <div class="sec-wall-author-role">Fullstack Engineer</div>
+                  </div>
+                </div>
+                <span class="sec-wall-tag">Verified Developer</span>
+              </div>
+            </div>
+
+            <!-- Review 6 -->
+            <div class="sec-wall-card" data-category="founders">
+              <div class="sec-wall-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="sec-wall-quote">
+                "Our team of 40 developers standardized on Hush UI tokens across 6 applications in under a week. It eliminated hundreds of lines of boilerplate CSS."
+              </p>
+              <div class="sec-wall-card-footer">
+                <div class="sec-wall-author-group">
+                  <div class="ui-avatar ui-avatar--lilac" style="width:36px; height:36px;">TP</div>
+                  <div class="sec-wall-author-details">
+                    <div class="sec-wall-author-name">Tariq Patel</div>
+                    <div class="sec-wall-author-role">VP Engineering @ CloudScale</div>
+                  </div>
+                </div>
+                <span class="sec-wall-tag">Enterprise Team</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    `,
+    html: `<!-- Customer Wall of Love & Testimonials Section -->
+<section class="sec-wall-section">
+  <div class="sec-wall-header">
+    <span class="ui-catalog-badge">Wall of Love</span>
+    <h2 class="sec-wall-title">Trusted by Leading Product Teams</h2>
+    <p class="sec-wall-subtitle">See how developers and designers use Hush UI.</p>
+  </div>
+
+  <div class="sec-wall-grid">
+    <!-- Testimonial Card -->
+    <div class="sec-wall-card">
+      <div class="sec-wall-stars">★★★★★</div>
+      <p class="sec-wall-quote">"Hush UI gave our product suite an unfair design advantage."</p>
+      <div class="sec-wall-card-footer">
+        <div class="sec-wall-author-group">
+          <div class="ui-avatar ui-avatar--sage">MK</div>
+          <div class="sec-wall-author-details">
+            <div class="sec-wall-author-name">Marcus Kane</div>
+            <div class="sec-wall-author-role">Founder @ Stride AI</div>
+          </div>
+        </div>
+        <span class="sec-wall-tag">Verified Customer</span>
+      </div>
+    </div>
+  </div>
+</section>`,
+    css: `.sec-wall-section {
+  padding: clamp(32px, 6vw, 76px) 16px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.sec-wall-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 44px auto;
+}
+.sec-wall-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 960px) {
+  .sec-wall-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .sec-wall-grid { grid-template-columns: 1fr; }
+}
+.sec-wall-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 16px);
+  padding: 24px;
+  box-shadow: var(--shadow-xs);
+  transition: transform 150ms var(--spring-hover), box-shadow 150ms var(--spring-hover), border-color 150ms ease;
+}
+.sec-wall-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  border-color: color-mix(in srgb, var(--primary) 50%, var(--border));
+}`,
+    js: `// Category filter switcher for Wall of Love
+const filterBtns = document.querySelectorAll('.sec-wall-filter-btn');
+const cards = document.querySelectorAll('.sec-wall-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    const filter = btn.dataset.filter;
+
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});`
   }
 ];
 

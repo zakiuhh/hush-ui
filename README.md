@@ -1,6 +1,6 @@
 # Hush UI
 
-> A calm, spring-motion Hush UI design system with 40 accessible primitives and 26 responsive layout sections. Built for intentional web development with zero runtime baggage.
+> A calm, spring-motion Hush UI design system with 51 accessible primitives and 28 responsive layout sections. Built for intentional web development with zero runtime baggage.
 
 [![npm version](https://img.shields.io/npm/v/@zak1.uhh/hush-ui.svg)](https://www.npmjs.com/package/@zak1.uhh/hush-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
@@ -10,8 +10,8 @@
 
 ## Highlights
 
-- **40 Core Primitives**: From segmented pill switchers, color swatch pickers, and custom context menus to macOS spring docks, number tickers, star ratings, and before/after sliders.
-- **26 Pre-Made Responsive Sections**: Real-time interactive pricing calculators with seat sliders, customer case study heroes, feature comparison matrices, split authentication screens, and release note feeds.
+- **51 Core Primitives**: From interactive sparklines, metric tiles, and touch-swipeable carousels to date pickers, inline edit fields, scrollspy TOCs, OTP inputs, waveform players, tag inputs, and live password meters.
+- **28 Pre-Made Responsive Sections**: Multi-step onboarding wizards, customer testimonial walls, interactive pricing calculators with seat sliders, customer case study heroes, and comparison matrices.
 - **GPU Spring Physics**: Calibrated cubic-bezier curves for tactile hover, sliding, and click responses.
 - **Sky Morphing Themes**: Dynamic light/dark theme switching with smooth transitions and CSS custom property tokens.
 - **Framework Agnostic**: Works out of the box with vanilla HTML, Vite, Next.js, React, Vue, Svelte, and Astro.
@@ -39,70 +39,24 @@ bun add @zak1.uhh/hush-ui
 
 ## Quick Start
 
-### 1. In Vanilla HTML via CDN / Static files
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>My Hush UI App</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@zak1.uhh/hush-ui/dist/hush-ui.css" />
-</head>
-<body>
-  <button class="ui-button ui-button--primary">Click Me</button>
-
-  <script type="module">
-    import { initHushUI } from 'https://cdn.jsdelivr.net/npm/@zak1.uhh/hush-ui/dist/hush-ui.js';
-    initHushUI();
-  </script>
-</body>
-</html>
-```
-
-### 2. Import Styles (Bundler)
-
-Import the complete stylesheet in your main entry file (e.g. `main.js`, `index.tsx`, or `App.vue`):
+### 1. Import CSS and JavaScript
 
 ```javascript
-import '@zak1.uhh/hush-ui/dist/hush-ui.css';
-```
+// Import core styles (tokens, reset, and all primitives)
+import '@zak1.uhh/hush-ui/css';
 
-Or in your global CSS stylesheet:
+// Import initializers
+import { initHushUI, toggleTheme, showToast } from '@zak1.uhh/hush-ui';
 
-```css
-@import '@zak1.uhh/hush-ui/dist/hush-ui.css';
-```
-
-### 3. Initialize Interactive Components
-
-```javascript
-import { initHushUI } from '@zak1.uhh/hush-ui';
-
-// Initialize all interactive accordions, modals, tabs, sliders, docks, and marquees
-document.addEventListener('DOMContentLoaded', () => {
-  initHushUI();
-});
-```
-
-### 4. Granular Imports
-
-You can also import individual controllers and utilities as needed:
-
-```javascript
-import {
-  initSliders,
-  initMarquee,
-  initDock,
-  initSpotlight,
-  initAccordions,
-  initModals,
-  showToast,
-  toggleTheme
-} from '@zak1.uhh/hush-ui';
+// Initialize all interactive components in the DOM
+initHushUI();
 
 // Trigger a toast notification
-showToast('Workspace Synced', 'All design tokens and spring curves applied.', 'success');
+showToast({
+  title: 'Welcome to Hush UI',
+  message: 'Calm, spring-motion design tokens active.',
+  type: 'success'
+});
 
 // Toggle between light and dark mode
 toggleTheme();
@@ -110,7 +64,7 @@ toggleTheme();
 
 ---
 
-## 40 Component Primitives
+## 51 Component Primitives
 
 1. **Button** (`ui-button`) — Primary, Secondary, Ghost, Destructive, and Outline variants.
 2. **Card** (`ui-card`) — Elevated surfaces with soft border tints and hover transitions.
@@ -152,10 +106,21 @@ toggleTheme();
 38. **Segmented Control Switcher** (`ui-segmented-control`) — Spring pill sliding control with keyboard navigation.
 39. **Color Swatch & Hue Picker** (`ui-color-picker`) — Pastel swatch buttons with continuous hue slider and HEX copy.
 40. **Custom Context Menu** (`ui-context-menu`) — Collision-aware right-click floating menu with shortcut badges.
+41. **Multi-Slot OTP / PIN Input** (`ui-otp-input`) — 6-digit verification code inputs with auto-advance and backspace retreat.
+42. **Audio & Waveform Player Widget** (`ui-audio-player`) — Tactile audio widget with dynamic waveform visualizer and scrubber.
+43. **Tag / Token Auto-Complete Input** (`ui-tag-input`) — Pastel chip tags on Enter/Comma with backspace removal.
+44. **Password Strength Meter & Live Checklist** (`ui-password-meter`) — 4-tier strength progress bar and live criteria checklist.
+45. **Date Picker** (`ui-date-picker`) — Calendar popover with range capsules.
+46. **Inline Edit** (`ui-inline-edit`) — In-place text editing field.
+47. **Table of Contents** (`ui-toc`) — Scrollspy navigation sidebar.
+48. **Pagination** (`ui-pagination`) — Tactile page navigation bar.
+49. **Interactive Sparkline** (`ui-sparkline`) — SVG trend curve with bezier smoothing and hover crosshairs.
+50. **High-Density Metric Tile** (`ui-metric-tile`) — KPI metric card with timeframe switcher and embedded sparkline.
+51. **Touch-Swipeable Carousel** (`ui-carousel`) — Fluid card reel with swipe physics and dot indicators.
 
 ---
 
-## 26 Pre-Made Layout Sections
+## 28 Pre-Made Layout Sections
 
 1. **Split Hero with Visual Canvas** (`sec-hero-split`)
 2. **Centered Conversion Hero with Search** (`sec-hero-centered`)
@@ -183,6 +148,8 @@ toggleTheme();
 24. **Interactive 404 / Empty State Canvas** (`error-404`)
 25. **Interactive Pricing Matrix & Slider** (`pricing-interactive`)
 26. **Customer Case Study & Success Story** (`case-study`)
+27. **Multi-Step Onboarding Wizard** (`onboarding-wizard`)
+28. **Customer Wall of Love & Video Testimonials** (`testimonial-wall`)
 
 ---
 

@@ -228,6 +228,76 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Multi-step Wizard Controller inside stage
+  function initWizardInteractive(container = document) {
+    const wizard = container.querySelector('.sec-wizard-section');
+    if (wizard) {
+      let step = 1;
+      const nextBtn = wizard.querySelector('.sec-wizard-next-btn');
+      const prevBtn = wizard.querySelector('.sec-wizard-prev-btn');
+
+      function update() {
+        wizard.querySelectorAll('.sec-step-item').forEach((el) => {
+          const s = parseInt(el.dataset.step, 10);
+          el.classList.toggle('is-active', s === step);
+        });
+        wizard.querySelectorAll('.sec-wizard-pane').forEach((el) => {
+          const p = parseInt(el.dataset.pane, 10);
+          el.classList.toggle('is-active', p === step);
+        });
+        if (prevBtn) prevBtn.style.visibility = step > 1 ? 'visible' : 'hidden';
+        if (nextBtn) nextBtn.textContent = step === 3 ? 'Finish Setup' : 'Continue';
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          if (step < 3) {
+            step++;
+            update();
+          } else {
+            alert('Demo: Workspace onboarding setup completed successfully!');
+          }
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          if (step > 1) {
+            step--;
+            update();
+          }
+        });
+      }
+
+      update();
+    }
+  }
+
+  // Wall of Love Category Filter inside stage
+  function initWallOfLoveInteractive(container = document) {
+    const wall = container.querySelector('.sec-wall-section');
+    if (wall) {
+      const filterBtns = wall.querySelectorAll('.sec-wall-filter-btn');
+      const cards = wall.querySelectorAll('.sec-wall-card');
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach((b) => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          const filter = btn.dataset.filter;
+
+          cards.forEach((card) => {
+            if (filter === 'all' || card.dataset.category === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+  }
+
   // Open Section Inspector Modal
   function openSectionModal(sec) {
     activeSection = sec;
@@ -249,6 +319,8 @@ document.addEventListener('DOMContentLoaded', () => {
       initSegmentedControls(stage);
       initRoiCalculator(stage);
       initPricingInteractiveCalculator(stage);
+      initWizardInteractive(stage);
+      initWallOfLoveInteractive(stage);
     }
 
     if (window.innerWidth <= 768) {

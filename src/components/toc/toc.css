@@ -1,0 +1,105 @@
+/* ==========================================================================
+   HUSH UI - FLOATING TABLE OF CONTENTS / SCROLLSPY
+   ========================================================================== */
+
+.ui-toc {
+  position: relative;
+  font-family: var(--font-sans);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 14px);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-xs);
+  max-width: 280px;
+  box-sizing: border-box;
+}
+
+.ui-toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ui-toc-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ui-toc-progress-text {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  color: var(--primary);
+}
+
+/* Nav list with vertical spring track */
+.ui-toc-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 2px solid var(--border);
+}
+
+/* Moving Spring Pill Indicator */
+.ui-toc-marker {
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 2px;
+  height: 24px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  transition: transform 200ms var(--spring-hover), height 150ms ease;
+  pointer-events: none;
+}
+
+.ui-toc-item {
+  position: relative;
+}
+
+.ui-toc-link {
+  display: block;
+  padding: 5px 12px;
+  font-size: var(--text-xs, 12px);
+  font-weight: 500;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  transition: color 150ms ease, background-color 150ms ease, transform 150ms var(--spring-hover);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-toc-link:hover {
+  color: var(--foreground);
+  background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+  transform: translateX(2px);
+}
+
+.ui-toc-item.is-active > .ui-toc-link {
+  color: var(--primary);
+  font-weight: 700;
+  background-color: color-mix(in srgb, var(--primary) 12%, var(--card));
+}
+
+.ui-toc-item--sub {
+  padding-left: 12px;
+}
+
+.ui-toc-item--sub .ui-toc-link {
+  font-size: 11px;
+}

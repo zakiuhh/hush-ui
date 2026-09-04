@@ -1,7 +1,7 @@
 {
   "name": "@zak1.uhh/hush-ui",
-  "version": "1.1.0",
-  "description": "A calm, spring-motion Hush UI design system with 40 accessible primitives and 26 responsive sections for vanilla JS, React, Vue, Svelte, and modern web applications.",
+  "version": "1.4.1",
+  "description": "A calm, spring-motion Hush UI design system with 51 accessible primitives and 28 responsive sections for vanilla JS, React, Vue, Svelte, and modern web applications.",
   "type": "module",
   "main": "./dist/hush-ui.umd.cjs",
   "module": "./dist/hush-ui.js",

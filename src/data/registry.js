@@ -2740,8 +2740,1138 @@ initColorPickers();`
     js: `import { initContextMenu } from '@zak1.uhh/hush-ui';
 
 initContextMenu();`
+  },
+  {
+    id: 'otp-input',
+    name: 'Multi-Slot OTP / PIN Input',
+    category: 'Inputs',
+    description: '6-digit verification code input with auto-advance, backspace retreat, paste parsing, and error shake animation.',
+    cardPreview: `
+      <div style="display:flex; gap:4px; align-items:center; justify-content:center;">
+        <span style="width:14px; height:18px; border-radius:3px; background:var(--muted); border:1px solid var(--border); display:inline-block;"></span>
+        <span style="width:14px; height:18px; border-radius:3px; background:var(--muted); border:1px solid var(--border); display:inline-block;"></span>
+        <span style="width:14px; height:18px; border-radius:3px; background:var(--primary); opacity:0.8; display:inline-block;"></span>
+        <span style="width:14px; height:18px; border-radius:3px; background:var(--muted); border:1px solid var(--border); display:inline-block;"></span>
+      </div>
+    `,
+    previewMarkup: `
+      <div class="ui-otp-container" style="padding: 12px 0;">
+        <div style="text-align:center; margin-bottom: 4px;">
+          <div style="font-size:14px; font-weight:700; color:var(--foreground);">Verification Code</div>
+          <div style="font-size:11px; color:var(--muted-foreground);">Enter the 6-digit code sent to your email</div>
+        </div>
+        <div class="ui-otp-slots">
+          <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" autocomplete="one-time-code" aria-label="Digit 1" />
+          <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" aria-label="Digit 2" />
+          <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" aria-label="Digit 3" />
+          <span class="ui-otp-separator">-</span>
+          <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" aria-label="Digit 4" />
+          <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" aria-label="Digit 5" />
+          <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" aria-label="Digit 6" />
+        </div>
+        <div class="ui-otp-actions">
+          <span>Didn't receive code?</span>
+          <button type="button" class="ui-otp-resend-btn" onclick="alert('Demo: Verification code resent!')">Resend Code</button>
+        </div>
+      </div>
+    `,
+    html: `<!-- Multi-Slot OTP / PIN Input -->
+<div class="ui-otp-container">
+  <div class="ui-otp-slots">
+    <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" autocomplete="one-time-code" aria-label="Digit 1" />
+    <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" aria-label="Digit 2" />
+    <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" aria-label="Digit 3" />
+    <span class="ui-otp-separator">-</span>
+    <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" aria-label="Digit 4" />
+    <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" aria-label="Digit 5" />
+    <input type="text" class="ui-otp-slot" maxlength="1" inputmode="numeric" aria-label="Digit 6" />
+  </div>
+  <div class="ui-otp-actions">
+    <span>Didn't receive code?</span>
+    <button type="button" class="ui-otp-resend-btn">Resend Code</button>
+  </div>
+</div>`,
+    css: `.ui-otp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 420px;
+}
+.ui-otp-slots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 2vw, 12px);
+}
+.ui-otp-slot {
+  width: clamp(36px, 11vw, 50px);
+  height: clamp(44px, 13vw, 58px);
+  font-family: var(--font-mono);
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--foreground);
+  background-color: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color 150ms var(--spring-hover), box-shadow 150ms var(--spring-hover);
+}
+.ui-otp-slot:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 22%, transparent);
+}
+.ui-otp-slot.is-filled {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--card) 95%, var(--primary));
+}`,
+    js: `import { initOtpInput } from '@zak1.uhh/hush-ui';
+
+initOtpInput();`
+  },
+  {
+    id: 'audio-player',
+    name: 'Audio & Waveform Player Widget',
+    category: 'Media',
+    description: 'Tactile audio player with dynamic SVG waveform visualizer bars, play/pause spring toggle, and timestamp readout.',
+    cardPreview: `
+      <div style="display:flex; align-items:center; gap:6px; padding:4px 8px; border-radius:8px; background:var(--card); border:1px solid var(--border);">
+        <div style="width:14px; height:14px; border-radius:50%; background:var(--primary);"></div>
+        <div style="display:flex; gap:2px; align-items:flex-end; height:12px;">
+          <span style="width:2px; height:6px; background:var(--muted-foreground); border-radius:1px;"></span>
+          <span style="width:2px; height:10px; background:var(--primary); border-radius:1px;"></span>
+          <span style="width:2px; height:4px; background:var(--muted-foreground); border-radius:1px;"></span>
+        </div>
+      </div>
+    `,
+    previewMarkup: `
+      <div class="ui-audio-player">
+        <div class="ui-audio-header">
+          <div class="ui-audio-track-info">
+            <div class="ui-audio-cover">
+              <svg class="lucide lucide-music" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <div class="ui-audio-meta">
+              <div class="ui-audio-title">Whispering Pines (Acoustic)</div>
+              <div class="ui-audio-artist">Hush Soundscapes · Episode 04</div>
+            </div>
+          </div>
+          <button class="ui-audio-volume-btn" type="button" aria-label="Volume">
+            <svg class="lucide lucide-volume-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+
+        <!-- Waveform Visualizer -->
+        <div class="ui-audio-waveform-wrap" title="Click anywhere on waveform to seek">
+          <span class="ui-waveform-bar" style="height:35%;"></span>
+          <span class="ui-waveform-bar" style="height:60%;"></span>
+          <span class="ui-waveform-bar" style="height:85%;"></span>
+          <span class="ui-waveform-bar" style="height:45%;"></span>
+          <span class="ui-waveform-bar" style="height:70%;"></span>
+          <span class="ui-waveform-bar" style="height:100%;"></span>
+          <span class="ui-waveform-bar" style="height:80%;"></span>
+          <span class="ui-waveform-bar" style="height:55%;"></span>
+          <span class="ui-waveform-bar" style="height:90%;"></span>
+          <span class="ui-waveform-bar" style="height:65%;"></span>
+          <span class="ui-waveform-bar" style="height:40%;"></span>
+          <span class="ui-waveform-bar" style="height:75%;"></span>
+          <span class="ui-waveform-bar" style="height:95%;"></span>
+          <span class="ui-waveform-bar" style="height:50%;"></span>
+          <span class="ui-waveform-bar" style="height:30%;"></span>
+          <span class="ui-waveform-bar" style="height:60%;"></span>
+          <span class="ui-waveform-bar" style="height:85%;"></span>
+          <span class="ui-waveform-bar" style="height:70%;"></span>
+          <span class="ui-waveform-bar" style="height:40%;"></span>
+          <span class="ui-waveform-bar" style="height:55%;"></span>
+        </div>
+
+        <!-- Controls -->
+        <div class="ui-audio-controls">
+          <button class="ui-audio-play-btn" type="button" aria-label="Play track">
+            <svg class="icon-play lucide lucide-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg class="icon-pause lucide lucide-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect width="4" height="16" x="6" y="4"/><rect width="4" height="16" x="14" y="4"/></svg>
+          </button>
+          <div class="ui-audio-timestamps">1:09 / 3:18</div>
+        </div>
+      </div>
+    `,
+    html: `<!-- Audio & Waveform Player Widget -->
+<div class="ui-audio-player">
+  <div class="ui-audio-header">
+    <div class="ui-audio-track-info">
+      <div class="ui-audio-cover">
+        <svg class="lucide lucide-music" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      </div>
+      <div class="ui-audio-meta">
+        <div class="ui-audio-title">Whispering Pines</div>
+        <div class="ui-audio-artist">Hush Soundscapes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-audio-waveform-wrap">
+    <span class="ui-waveform-bar" style="height:35%;"></span>
+    <span class="ui-waveform-bar" style="height:60%;"></span>
+    <span class="ui-waveform-bar" style="height:85%;"></span>
+    <span class="ui-waveform-bar" style="height:100%;"></span>
+    <span class="ui-waveform-bar" style="height:55%;"></span>
+    <span class="ui-waveform-bar" style="height:90%;"></span>
+  </div>
+
+  <div class="ui-audio-controls">
+    <button class="ui-audio-play-btn" type="button" aria-label="Play track">
+      <svg class="icon-play lucide lucide-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      <svg class="icon-pause lucide lucide-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect width="4" height="16" x="6" y="4"/><rect width="4" height="16" x="14" y="4"/></svg>
+    </button>
+    <div class="ui-audio-timestamps">0:00 / 3:18</div>
+  </div>
+</div>`,
+    css: `.ui-audio-player {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: 16px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  max-width: 460px;
+}
+.ui-audio-waveform-wrap {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 48px;
+  padding: 4px 8px;
+  background-color: color-mix(in srgb, var(--muted) 45%, transparent);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+.ui-waveform-bar {
+  flex: 1;
+  border-radius: 3px;
+  background-color: color-mix(in srgb, var(--muted-foreground) 35%, transparent);
+  transition: background-color 150ms ease;
+}
+.ui-waveform-bar.is-played {
+  background-color: var(--primary);
+}
+.ui-audio-play-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  cursor: pointer;
+}`,
+    js: `import { initAudioPlayer } from '@zak1.uhh/hush-ui';
+
+initAudioPlayer();`
+  },
+  {
+    id: 'tag-input',
+    name: 'Tag / Token Auto-Complete Input',
+    category: 'Inputs',
+    description: 'Form input that turns entered text into removable pastel badge chips on Enter or Comma with backspace deletion.',
+    cardPreview: `
+      <div style="background:var(--card); border:var(--border-default); border-radius:8px; padding:6px 8px; display:flex; gap:4px; align-items:center;">
+        <span style="font-size:8px; font-weight:600; padding:2px 6px; border-radius:10px; background:var(--muted);">UI/UX</span>
+        <span style="font-size:8px; font-weight:600; padding:2px 6px; border-radius:10px; background:var(--muted);">Design</span>
+      </div>
+    `,
+    previewMarkup: `
+      <div class="ui-tag-input-container" data-max-tags="6">
+        <label style="font-size:12px; font-weight:700; color:var(--foreground);">Skill Tags</label>
+        <div class="ui-tag-input-wrap">
+          <span class="ui-tag-chip" data-value="CSS3">
+            <span>CSS3</span>
+            <button type="button" class="ui-tag-chip-remove" aria-label="Remove CSS3">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+          </span>
+          <span class="ui-tag-chip" data-value="TypeScript">
+            <span>TypeScript</span>
+            <button type="button" class="ui-tag-chip-remove" aria-label="Remove TypeScript">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+          </span>
+          <input type="text" class="ui-tag-field" placeholder="Type a skill and press Enter..." />
+        </div>
+        <div class="ui-tag-helper">
+          <span>Press Enter or comma to add tag</span>
+          <span class="ui-tag-count">2/6 tags</span>
+        </div>
+      </div>
+    `,
+    html: `<!-- Tag / Token Auto-Complete Input -->
+<div class="ui-tag-input-container" data-max-tags="8">
+  <label style="font-size:12px; font-weight:700; color:var(--foreground);">Project Tags</label>
+  <div class="ui-tag-input-wrap">
+    <span class="ui-tag-chip" data-value="Design">
+      <span>Design</span>
+      <button type="button" class="ui-tag-chip-remove" aria-label="Remove Design">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </span>
+    <input type="text" class="ui-tag-field" placeholder="Type tag and press Enter..." />
+  </div>
+  <div class="ui-tag-helper">
+    <span>Press Enter or comma to add</span>
+    <span class="ui-tag-count">1/8 tags</span>
+  </div>
+</div>`,
+    css: `.ui-tag-input-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  min-height: 48px;
+}
+.ui-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px 3px 10px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  background-color: color-mix(in srgb, var(--primary) 12%, var(--card));
+  color: var(--foreground);
+}
+.ui-tag-chip-remove {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--muted-foreground);
+}
+.ui-tag-field {
+  flex: 1;
+  min-width: 90px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--foreground);
+}`,
+    js: `import { initTagInput } from '@zak1.uhh/hush-ui';
+
+initTagInput();`
+  },
+  {
+    id: 'password-meter',
+    name: 'Password Strength Meter & Live Checklist',
+    category: 'Inputs',
+    description: 'Password input with visibility toggle, 4-tier colored spring strength bar, and live requirement checklist indicators.',
+    cardPreview: `
+      <div style="display:flex; flex-direction:column; gap:4px; width:70px;">
+        <div style="height:8px; border-radius:4px; background:var(--muted); border:1px solid var(--border);"></div>
+        <div style="display:flex; gap:2px;">
+          <span style="flex:1; height:3px; border-radius:2px; background:var(--sage);"></span>
+          <span style="flex:1; height:3px; border-radius:2px; background:var(--sage);"></span>
+          <span style="flex:1; height:3px; border-radius:2px; background:var(--sage);"></span>
+        </div>
+      </div>
+    `,
+    previewMarkup: `
+      <div class="ui-password-meter" data-strength="3">
+        <label style="font-size:12px; font-weight:700; color:var(--foreground);">Create Password</label>
+        <div class="ui-password-field-wrap">
+          <input type="password" class="ui-password-input" value="HushSecure!24" placeholder="Enter password..." />
+          <button type="button" class="ui-password-toggle-btn" aria-label="Toggle password visibility">
+            <svg class="icon-eye lucide lucide-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg class="icon-eye-off lucide lucide-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+          </button>
+        </div>
+
+        <!-- 4-Tier Strength Bar -->
+        <div class="ui-meter-track">
+          <div class="ui-meter-segment"></div>
+          <div class="ui-meter-segment"></div>
+          <div class="ui-meter-segment"></div>
+          <div class="ui-meter-segment"></div>
+        </div>
+
+        <div class="ui-meter-label-row">
+          <span>Security Score</span>
+          <span class="ui-meter-status-text">Good</span>
+        </div>
+
+        <!-- Requirements Checklist -->
+        <div class="ui-password-checklist">
+          <div class="ui-req-item is-met" data-req="length">
+            <svg class="ui-req-icon lucide lucide-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>8+ Characters</span>
+          </div>
+          <div class="ui-req-item is-met" data-req="upper">
+            <svg class="ui-req-icon lucide lucide-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Uppercase letter</span>
+          </div>
+          <div class="ui-req-item is-met" data-req="number">
+            <svg class="ui-req-icon lucide lucide-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Includes number</span>
+          </div>
+          <div class="ui-req-item is-met" data-req="symbol">
+            <svg class="ui-req-icon lucide lucide-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Special character</span>
+          </div>
+        </div>
+      </div>
+    `,
+    html: `<!-- Password Strength Meter & Live Checklist -->
+<div class="ui-password-meter" data-strength="0">
+  <div class="ui-password-field-wrap">
+    <input type="password" class="ui-password-input" placeholder="Create a password" />
+    <button type="button" class="ui-password-toggle-btn" aria-label="Show password">
+      <svg class="icon-eye lucide lucide-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+      <svg class="icon-eye-off lucide lucide-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+    </button>
+  </div>
+
+  <div class="ui-meter-track">
+    <div class="ui-meter-segment"></div>
+    <div class="ui-meter-segment"></div>
+    <div class="ui-meter-segment"></div>
+    <div class="ui-meter-segment"></div>
+  </div>
+
+  <div class="ui-meter-label-row">
+    <span>Strength</span>
+    <span class="ui-meter-status-text">Empty</span>
+  </div>
+
+  <div class="ui-password-checklist">
+    <div class="ui-req-item" data-req="length">
+      <svg class="ui-req-icon lucide lucide-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      <span>8+ Characters</span>
+    </div>
+    <div class="ui-req-item" data-req="upper">
+      <svg class="ui-req-icon lucide lucide-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      <span>Uppercase letter</span>
+    </div>
+    <div class="ui-req-item" data-req="number">
+      <svg class="ui-req-icon lucide lucide-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      <span>Includes number</span>
+    </div>
+    <div class="ui-req-item" data-req="symbol">
+      <svg class="ui-req-icon lucide lucide-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      <span>Special character</span>
+    </div>
+  </div>
+</div>`,
+    css: `.ui-password-meter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 420px;
+}
+.ui-password-input {
+  width: 100%;
+  padding: 10px 42px 10px 14px;
+  background-color: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+}
+.ui-meter-track {
+  display: flex;
+  gap: 4px;
+  height: 4px;
+}
+.ui-meter-segment {
+  flex: 1;
+  background-color: var(--muted);
+  border-radius: var(--radius-full);
+  transition: background-color 250ms var(--spring-hover);
+}
+.ui-password-meter[data-strength="4"] .ui-meter-segment {
+  background-color: var(--sage);
+}`,
+    js: `import { initPasswordMeter } from '@zak1.uhh/hush-ui';
+
+initPasswordMeter();`
+  },
+  {
+    id: 'date-picker',
+    name: 'Date Range & Calendar Picker',
+    category: 'Inputs',
+    description: 'Interactive calendar flyout with spring month transitions, date range selection capsules, and quick presets.',
+    cardPreview: `
+      <div style="display:flex; flex-direction:column; gap:4px; width:100%; max-width:130px; font-size:8px; background:var(--card); padding:8px; border:var(--border-default); border-radius:6px; box-sizing:border-box;">
+        <div style="display:flex; align-items:center; gap:4px; color:var(--muted-foreground); font-size:7px;">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          <span>Date Range</span>
+        </div>
+        <div style="font-size:7.5px; font-weight:700; color:var(--foreground);">Sep 14 – Sep 21</div>
+        <div style="display:flex; gap:2px; margin-top:2px;">
+          <span style="flex:1; height:3px; background:var(--primary); border-radius:1px;"></span>
+          <span style="flex:1; height:3px; background:var(--primary); border-radius:1px;"></span>
+          <span style="flex:1; height:3px; background:var(--muted); border-radius:1px;"></span>
+        </div>
+      </div>
+    `,
+    previewMarkup: `
+      <div style="display:flex; flex-direction:column; gap:16px; align-items:center; justify-content:center; width:100%; min-height:360px;">
+        <div class="ui-date-picker" data-mode="range" style="z-index:20;">
+          <button type="button" class="ui-date-picker-trigger">
+            <span class="ui-date-picker-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            </span>
+            <span class="ui-date-picker-value">Select date range</span>
+          </button>
+
+          <div class="ui-date-picker-dropdown">
+            <!-- Presets Bar -->
+            <div class="ui-date-picker-presets">
+              <button type="button" class="ui-date-preset-btn" data-preset="today">Today</button>
+              <button type="button" class="ui-date-preset-btn" data-preset="7days">Last 7 Days</button>
+              <button type="button" class="ui-date-preset-btn is-active" data-preset="30days">Last 30 Days</button>
+              <button type="button" class="ui-date-preset-btn" data-preset="thismonth">This Month</button>
+            </div>
+
+            <!-- Header Nav -->
+            <div class="ui-calendar-header">
+              <button type="button" class="ui-calendar-nav-btn ui-calendar-prev" aria-label="Previous month">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+              <span class="ui-calendar-title">September 2026</span>
+              <button type="button" class="ui-calendar-nav-btn ui-calendar-next" aria-label="Next month">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+
+            <!-- Weekdays -->
+            <div class="ui-calendar-grid">
+              <span class="ui-calendar-weekday">Mo</span>
+              <span class="ui-calendar-weekday">Tu</span>
+              <span class="ui-calendar-weekday">We</span>
+              <span class="ui-calendar-weekday">Th</span>
+              <span class="ui-calendar-weekday">Fr</span>
+              <span class="ui-calendar-weekday">Sa</span>
+              <span class="ui-calendar-weekday">Su</span>
+            </div>
+
+            <!-- Days Grid Container -->
+            <div class="ui-calendar-grid ui-calendar-grid-days"></div>
+
+            <!-- Footer Actions -->
+            <div class="ui-date-picker-footer">
+              <button type="button" class="ui-date-picker-clear">Clear Range</button>
+              <button type="button" class="ui-date-picker-apply">Apply Dates</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+    html: `<!-- Interactive Date Range & Calendar Picker -->
+<div class="ui-date-picker" data-mode="range">
+  <button type="button" class="ui-date-picker-trigger">
+    <span class="ui-date-picker-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+    </span>
+    <span class="ui-date-picker-value">Select date range</span>
+  </button>
+
+  <div class="ui-date-picker-dropdown">
+    <div class="ui-date-picker-presets">
+      <button type="button" class="ui-date-preset-btn" data-preset="7days">Last 7 Days</button>
+      <button type="button" class="ui-date-preset-btn" data-preset="thismonth">This Month</button>
+    </div>
+    <div class="ui-calendar-header">
+      <button type="button" class="ui-calendar-nav-btn ui-calendar-prev">‹</button>
+      <span class="ui-calendar-title">September 2026</span>
+      <button type="button" class="ui-calendar-nav-btn ui-calendar-next">›</button>
+    </div>
+    <div class="ui-calendar-grid ui-calendar-grid-days"></div>
+  </div>
+</div>`,
+    css: `.ui-date-picker {
+  position: relative;
+  display: inline-block;
+}
+.ui-date-picker-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 100;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-lg);
+}
+.ui-calendar-day.is-selected {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+.ui-calendar-day.is-in-range {
+  background-color: color-mix(in srgb, var(--primary) 20%, var(--card));
+}`,
+    js: `import { initDatePicker } from '@zak1.uhh/hush-ui';
+
+initDatePicker();`
+  },
+  {
+    id: 'inline-edit',
+    name: 'Inline Click-to-Edit Field',
+    category: 'Inputs',
+    description: 'Seamless in-place text editor with hover indicators, Enter/Escape keyboard triggers, and spring confirmation feedback.',
+    cardPreview: `
+      <div style="display:flex; flex-direction:column; gap:4px; width:100%; max-width:130px; font-size:8px; background:var(--card); padding:8px; border:var(--border-default); border-radius:6px; box-sizing:border-box;">
+        <div style="font-size:7px; color:var(--muted-foreground);">Project Title</div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:8px; font-weight:700; color:var(--foreground);">Hush System</span>
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+        </div>
+      </div>
+    `,
+    previewMarkup: `
+      <div style="display:flex; flex-direction:column; gap:20px; align-items:flex-start; justify-content:center; max-width:440px; margin:0 auto; padding:24px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg);">
+        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+          <span style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted-foreground);">Workspace Name</span>
+          <div class="ui-inline-edit" data-name="workspace">
+            <div class="ui-inline-edit-view">
+              <span class="ui-inline-edit-text">Acme Design Studio</span>
+              <span class="ui-inline-edit-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </span>
+            </div>
+            <div class="ui-inline-edit-form">
+              <input type="text" class="ui-inline-edit-input" value="Acme Design Studio" />
+              <div class="ui-inline-edit-actions">
+                <button type="button" class="ui-inline-edit-btn ui-inline-edit-btn--save" aria-label="Save">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </button>
+                <button type="button" class="ui-inline-edit-btn ui-inline-edit-btn--cancel" aria-label="Cancel">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+          <span style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted-foreground);">Release Version</span>
+          <div class="ui-inline-edit" data-name="version">
+            <div class="ui-inline-edit-view">
+              <span class="ui-inline-edit-text">v1.3.0-rc4</span>
+              <span class="ui-inline-edit-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </span>
+            </div>
+            <div class="ui-inline-edit-form">
+              <input type="text" class="ui-inline-edit-input" value="v1.3.0-rc4" />
+              <div class="ui-inline-edit-actions">
+                <button type="button" class="ui-inline-edit-btn ui-inline-edit-btn--save" aria-label="Save">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </button>
+                <button type="button" class="ui-inline-edit-btn ui-inline-edit-btn--cancel" aria-label="Cancel">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+    html: `<!-- Inline Click-to-Edit Component -->
+<div class="ui-inline-edit">
+  <div class="ui-inline-edit-view">
+    <span class="ui-inline-edit-text">Acme Design Studio</span>
+    <span class="ui-inline-edit-icon">✎</span>
+  </div>
+  <div class="ui-inline-edit-form">
+    <input type="text" class="ui-inline-edit-input" value="Acme Design Studio" />
+    <button class="ui-inline-edit-btn ui-inline-edit-btn--save">✓</button>
+    <button class="ui-inline-edit-btn ui-inline-edit-btn--cancel">×</button>
+  </div>
+</div>`,
+    css: `.ui-inline-edit-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed transparent;
+  cursor: pointer;
+}
+.ui-inline-edit-view:hover {
+  background-color: var(--muted);
+  border-color: var(--border);
+}
+.ui-inline-edit.is-editing .ui-inline-edit-view { display: none; }
+.ui-inline-edit.is-editing .ui-inline-edit-form { display: inline-flex; }`,
+    js: `import { initInlineEdit } from '@zak1.uhh/hush-ui';
+
+initInlineEdit();`
+  },
+  {
+    id: 'toc',
+    name: 'Floating Table of Contents / ScrollSpy',
+    category: 'Navigation',
+    description: 'Sticky documentation navigation with real-time scroll tracking and moving spring highlight marker.',
+    cardPreview: `
+      <div style="display:flex; flex-direction:column; gap:4px; width:100%; max-width:130px; font-size:7px; background:var(--card); padding:8px; border:var(--border-default); border-radius:6px; box-sizing:border-box;">
+        <div style="font-weight:700; color:var(--primary); font-size:7px;">ON THIS PAGE · 64%</div>
+        <div style="border-left:2px solid var(--primary); padding-left:4px; font-weight:600;">1. Quick Setup</div>
+        <div style="border-left:2px solid var(--border); padding-left:4px; color:var(--muted-foreground);">2. Spring Tokens</div>
+      </div>
+    `,
+    previewMarkup: `
+      <div style="display:flex; gap:24px; width:100%; max-width:540px; margin:0 auto;">
+        <!-- Left: TOC Component -->
+        <nav class="ui-toc" aria-label="Table of contents" style="flex-shrink:0; width:220px;">
+          <div class="ui-toc-header">
+            <span class="ui-toc-title">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" x2="3" y1="6" y2="6"/><line x1="15" x2="3" y1="12" y2="12"/><line x1="17" x2="3" y1="18" y2="18"/></svg>
+              <span>On This Page</span>
+            </span>
+            <span class="ui-toc-progress-text">45%</span>
+          </div>
+          <ul class="ui-toc-list">
+            <li class="ui-toc-item is-active">
+              <a href="#intro" class="ui-toc-link">Introduction</a>
+            </li>
+            <li class="ui-toc-item">
+              <a href="#tokens" class="ui-toc-link">Spring Tokens</a>
+            </li>
+            <li class="ui-toc-item ui-toc-item--sub">
+              <a href="#curves" class="ui-toc-link">Bezier Curves</a>
+            </li>
+            <li class="ui-toc-item">
+              <a href="#theming" class="ui-toc-link">Theme System</a>
+            </li>
+            <li class="ui-toc-item">
+              <a href="#exporting" class="ui-toc-link">Module Exports</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Right: Sample Content Snippet -->
+        <div style="display:flex; flex-direction:column; gap:12px; font-size:12px; color:var(--muted-foreground); line-height:1.5;">
+          <div style="font-weight:700; font-size:14px; color:var(--foreground);">Documentation Preview</div>
+          <p>The floating Table of Contents monitors scroll positions and highlights headings in real-time with smooth spring physics.</p>
+          <div style="padding:10px; background:var(--muted); border-radius:6px; font-size:11px;">Click any section link to test tactile navigation.</div>
+        </div>
+      </div>
+    `,
+    html: `<!-- Floating Table of Contents / ScrollSpy -->
+<nav class="ui-toc" aria-label="Table of contents">
+  <div class="ui-toc-header">
+    <span class="ui-toc-title">On This Page</span>
+    <span class="ui-toc-progress-text">0%</span>
+  </div>
+  <ul class="ui-toc-list">
+    <li class="ui-toc-item is-active">
+      <a href="#overview" class="ui-toc-link">Overview</a>
+    </li>
+    <li class="ui-toc-item">
+      <a href="#installation" class="ui-toc-link">Installation</a>
+    </li>
+    <li class="ui-toc-item ui-toc-item--sub">
+      <a href="#bundler" class="ui-toc-link">Vite / Next.js Setup</a>
+    </li>
+    <li class="ui-toc-item">
+      <a href="#api" class="ui-toc-link">Component API</a>
+    </li>
+  </ul>
+</nav>`,
+    css: `.ui-toc {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  width: 240px;
+}
+.ui-toc-list {
+  position: relative;
+  border-left: 2px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+}
+.ui-toc-marker {
+  position: absolute;
+  left: -2px;
+  width: 2px;
+  background-color: var(--primary);
+  transition: transform 200ms var(--spring-hover);
+}
+.ui-toc-item.is-active > .ui-toc-link {
+  color: var(--primary);
+  font-weight: 700;
+}`,
+    js: `import { initToc } from '@zak1.uhh/hush-ui';
+
+initToc();`
+  },
+  {
+    id: 'pagination',
+    name: 'Tactile Pagination Bar',
+    category: 'Navigation',
+    description: 'Numbered pagination bar with sliding spring active highlight, ellipsis truncation, jump input, and page size selector.',
+    cardPreview: `
+      <div style="display:flex; align-items:center; gap:3px; background:var(--card); padding:6px 8px; border:var(--border-default); border-radius:12px; font-size:7px;">
+        <span style="width:14px; height:14px; border-radius:50%; background:var(--muted); display:flex; align-items:center; justify-content:center;">‹</span>
+        <span style="width:14px; height:14px; border-radius:50%; background:var(--primary); color:#1E1B24; display:flex; align-items:center; justify-content:center; font-weight:700;">1</span>
+        <span style="width:14px; height:14px; border-radius:50%; background:var(--muted); display:flex; align-items:center; justify-content:center;">2</span>
+        <span>…</span>
+        <span style="width:14px; height:14px; border-radius:50%; background:var(--muted); display:flex; align-items:center; justify-content:center;">›</span>
+      </div>
+    `,
+    previewMarkup: `
+      <div style="display:flex; flex-direction:column; gap:20px; align-items:center; justify-content:center; width:100%; padding:24px;">
+        <!-- Pagination Bar Component -->
+        <div class="ui-pagination" data-page="1" data-total-pages="12" data-page-size="10">
+          <div class="ui-pagination-track">
+            <button type="button" class="ui-pagination-btn ui-pagination-btn--nav ui-pagination-prev" aria-label="Previous page">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <!-- Generated page pills insert here -->
+            <button type="button" class="ui-pagination-btn ui-pagination-btn--nav ui-pagination-next" aria-label="Next page">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+
+          <!-- Controls and Page Jumper -->
+          <div class="ui-pagination-info">
+            <span class="ui-pagination-info-text">Page 1 of 12</span>
+            <div class="ui-pagination-jump">
+              <span>Go to</span>
+              <input type="number" class="ui-pagination-input" min="1" max="12" value="1" />
+            </div>
+            <select class="ui-pagination-size">
+              <option value="10">10 / page</option>
+              <option value="25">25 / page</option>
+              <option value="50">50 / page</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    `,
+    html: `<!-- Tactile Pagination Bar -->
+<div class="ui-pagination" data-page="1" data-total-pages="12" data-page-size="10">
+  <div class="ui-pagination-track">
+    <button type="button" class="ui-pagination-btn ui-pagination-prev">‹</button>
+    <!-- Dynamic page pills -->
+    <button type="button" class="ui-pagination-btn ui-pagination-next">›</button>
+  </div>
+  <div class="ui-pagination-info">
+    <span class="ui-pagination-info-text">Page 1 of 12</span>
+    <select class="ui-pagination-size">
+      <option value="10">10 / page</option>
+      <option value="25">25 / page</option>
+    </select>
+  </div>
+</div>`,
+    css: `.ui-pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ui-pagination-track {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 4px;
+}
+.ui-pagination-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 150ms var(--spring-hover);
+}
+.ui-pagination-btn.is-active {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}`,
+    js: `import { initPagination } from '@zak1.uhh/hush-ui';
+
+initPagination();`
+  },
+  {
+    id: 'sparkline',
+    name: 'Interactive Sparkline',
+    category: 'Data Display',
+    description: 'Hardware-accelerated SVG trend curve with bezier smoothing, interactive crosshair tracking, and live tooltip badge.',
+    cardPreview: `
+      <div style="display:flex; flex-direction:column; justify-content:center; width:100%; max-width:115px; height:44px; padding:4px 6px; background:var(--card); border:1px solid var(--border); border-radius:6px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+          <span style="font-size:7px; color:var(--muted-foreground);">MRR Growth</span>
+          <span style="font-size:7px; font-weight:700; color:var(--sage, #2e7d32);">+28.4%</span>
+        </div>
+        <svg viewBox="0 0 100 24" style="width:100%; height:20px; overflow:visible;">
+          <path d="M 0 20 C 20 18, 30 10, 50 14 C 70 18, 80 4, 100 2" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    `,
+    previewMarkup: `
+      <div style="display:flex; flex-direction:column; gap:20px; align-items:center; justify-content:center; width:100%; max-width:440px; padding:24px;">
+        <div style="width:100%; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:20px; box-shadow:var(--shadow-sm);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+            <div>
+              <span style="font-size:12px; color:var(--muted-foreground); font-weight:500;">Active Users (30-Day Trend)</span>
+              <h3 style="font-size:24px; font-weight:700; margin:4px 0 0; letter-spacing:-0.02em;">84,290</h3>
+            </div>
+            <span class="ui-chip ui-chip--primary" style="font-size:11px;">+18.2% vs last mo</span>
+          </div>
+
+          <!-- Sparkline Primitive -->
+          <div class="ui-sparkline" data-values="[28, 42, 35, 55, 68, 60, 78, 72, 89, 94, 91, 108]" data-prefix="$" data-suffix="k" data-show-peaks="true"></div>
+          
+          <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:11px; color:var(--muted-foreground);">
+            <span>Aug 01</span>
+            <span>Hover curve to inspect values</span>
+            <span>Aug 31</span>
+          </div>
+        </div>
+      </div>
+    `,
+    html: `<!-- Interactive Sparkline Chart -->
+<div class="ui-sparkline" 
+     data-values="[28, 42, 35, 55, 68, 60, 78, 72, 89, 94, 91, 108]" 
+     data-prefix="$" 
+     data-suffix="k" 
+     data-show-peaks="true">
+</div>`,
+    css: `.ui-sparkline {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  height: 80px;
+  user-select: none;
+}
+.ui-sparkline-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+.ui-sparkline-line {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}`,
+    js: `import { initSparkline } from '@zak1.uhh/hush-ui';
+
+initSparkline();`
+  },
+  {
+    id: 'metric-tile',
+    name: 'High-Density Metric Tile',
+    category: 'Data Display',
+    description: 'Executive dashboard KPI metric card with dynamic timeframe switcher, trend badge delta, and embedded sparkline.',
+    cardPreview: `
+      <div style="display:flex; flex-direction:column; justify-content:space-between; width:100%; max-width:115px; height:44px; padding:4px 6px; background:var(--card); border:1px solid var(--border); border-radius:6px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:7px; color:var(--muted-foreground);">Revenue</span>
+          <span style="font-size:6px; background:var(--muted); padding:1px 3px; border-radius:3px;">30D</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:10px; font-weight:700;">$94.2k</span>
+          <span style="font-size:6.5px; color:var(--sage, #2e7d32); font-weight:700;">+24%</span>
+        </div>
+      </div>
+    `,
+    previewMarkup: `
+      <div style="display:flex; justify-content:center; width:100%; padding:20px;">
+        <div class="ui-metric-tile" data-periods-data='{
+          "7d": { "value": "$18,450.00", "trend": "+8.1%", "trendType": "positive", "subtitle": "vs. previous 7 days", "sparkline": [12, 15, 14, 19, 18, 22, 24] },
+          "30d": { "value": "$94,280.00", "trend": "+24.8%", "trendType": "positive", "subtitle": "vs. previous 30 days", "sparkline": [28, 42, 35, 55, 68, 60, 78, 72, 89, 94, 91, 108] },
+          "90d": { "value": "$284,100.00", "trend": "+41.2%", "trendType": "positive", "subtitle": "vs. previous 90 days", "sparkline": [90, 110, 140, 135, 180, 210, 240, 284] }
+        }'>
+          <div class="ui-metric-header">
+            <div class="ui-metric-label-group">
+              <div class="ui-metric-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <h4 class="ui-metric-title">Recurring Revenue</h4>
+            </div>
+            <div class="ui-metric-periods">
+              <button type="button" class="ui-metric-period-btn" data-period="7d">7D</button>
+              <button type="button" class="ui-metric-period-btn is-active" data-period="30d">30D</button>
+              <button type="button" class="ui-metric-period-btn" data-period="90d">90D</button>
+            </div>
+          </div>
+
+          <div class="ui-metric-body">
+            <div class="ui-metric-main">
+              <span class="ui-metric-value">$94,280.00</span>
+              <span class="ui-metric-trend ui-metric-trend--positive">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                +24.8%
+              </span>
+            </div>
+            <p class="ui-metric-subtitle">vs. previous 30 days</p>
+          </div>
+
+          <div class="ui-metric-footer">
+            <div class="ui-sparkline" data-values="[28, 42, 35, 55, 68, 60, 78, 72, 89, 94, 91, 108]" data-prefix="$" data-suffix="k"></div>
+          </div>
+        </div>
+      </div>
+    `,
+    html: `<!-- High-Density Metric Tile -->
+<div class="ui-metric-tile" data-periods-data='{...}'>
+  <div class="ui-metric-header">
+    <div class="ui-metric-label-group">
+      <div class="ui-metric-icon">...</div>
+      <h4 class="ui-metric-title">Recurring Revenue</h4>
+    </div>
+    <div class="ui-metric-periods">
+      <button type="button" class="ui-metric-period-btn" data-period="7d">7D</button>
+      <button type="button" class="ui-metric-period-btn is-active" data-period="30d">30D</button>
+    </div>
+  </div>
+  <div class="ui-metric-body">
+    <div class="ui-metric-main">
+      <span class="ui-metric-value">$94,280.00</span>
+      <span class="ui-metric-trend ui-metric-trend--positive">+24.8%</span>
+    </div>
+    <p class="ui-metric-subtitle">vs. previous 30 days</p>
+  </div>
+  <div class="ui-metric-footer">
+    <div class="ui-sparkline" data-values="[28, 42, 35, 55, 68, 60, 78, 72, 89, 94]"></div>
+  </div>
+</div>`,
+    css: `.ui-metric-tile {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ui-metric-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}`,
+    js: `import { initMetricTile } from '@zak1.uhh/hush-ui';
+
+initMetricTile();`
+  },
+  {
+    id: 'carousel',
+    name: 'Touch-Swipeable Carousel',
+    category: 'Layout',
+    description: 'Hardware-accelerated sliding carousel with spring drag physics, touch-swipe gestures, auto-play, and indicator dots.',
+    cardPreview: `
+      <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; max-width:115px; height:44px; padding:4px 6px; background:var(--card); border:1px solid var(--border); border-radius:6px; position:relative; overflow:hidden;">
+        <div style="display:flex; gap:4px; width:100%; justify-content:center;">
+          <div style="width:28px; height:20px; background:var(--muted); border-radius:3px; opacity:0.4;"></div>
+          <div style="width:36px; height:22px; background:var(--primary); border-radius:3px; opacity:0.85;"></div>
+          <div style="width:28px; height:20px; background:var(--muted); border-radius:3px; opacity:0.4;"></div>
+        </div>
+        <div style="display:flex; gap:2px; margin-top:3px;">
+          <span style="width:4px; height:2px; background:var(--muted); border-radius:1px;"></span>
+          <span style="width:8px; height:2px; background:var(--primary); border-radius:1px;"></span>
+          <span style="width:4px; height:2px; background:var(--muted); border-radius:1px;"></span>
+        </div>
+      </div>
+    `,
+    previewMarkup: `
+      <div style="display:flex; justify-content:center; width:100%; max-width:540px; padding:20px;">
+        <div class="ui-carousel" data-autoplay="false" data-loop="true">
+          <!-- Slide Viewport -->
+          <div class="ui-carousel-viewport">
+            <div class="ui-carousel-track">
+              <!-- Slide 1 -->
+              <div class="ui-carousel-slide">
+                <div class="ui-carousel-card">
+                  <span class="ui-carousel-badge">Release v1.4.0</span>
+                  <h3 class="ui-carousel-title">Spring-Motion Primitives</h3>
+                  <p class="ui-carousel-desc">Experience hardware-accelerated fluid component gestures calibrated with sub-millisecond tactile feedback.</p>
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="ui-carousel-slide">
+                <div class="ui-carousel-card">
+                  <span class="ui-carousel-badge" style="background:color-mix(in srgb, var(--sage, #2e7d32) 15%, transparent); color:var(--sage, #2e7d32);">Design System</span>
+                  <h3 class="ui-carousel-title">Adaptive Token Engine</h3>
+                  <p class="ui-carousel-desc">Every token dynamically balances contrast ratios across warm daybreak and deep obsidian dark themes.</p>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="ui-carousel-slide">
+                <div class="ui-carousel-card">
+                  <span class="ui-carousel-badge" style="background:color-mix(in srgb, var(--lilac, #7b1fa2) 15%, transparent); color:var(--lilac, #7b1fa2);">Zero Dependencies</span>
+                  <h3 class="ui-carousel-title">Pure Vanilla Foundation</h3>
+                  <p class="ui-carousel-desc">Lightweight zero-dependency runtime ready for immediate drop-in integration into React, Vue, Svelte, or Astro.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls Navigation -->
+          <div class="ui-carousel-controls">
+            <button type="button" class="ui-carousel-btn ui-carousel-btn--prev" aria-label="Previous slide">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="ui-carousel-btn ui-carousel-btn--next" aria-label="Next slide">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+
+          <!-- Footer Indicators -->
+          <div class="ui-carousel-footer">
+            <div class="ui-carousel-indicators"></div>
+            <span class="ui-carousel-counter">1 / 3</span>
+          </div>
+        </div>
+      </div>
+    `,
+    html: `<!-- Touch-Swipeable Carousel -->
+<div class="ui-carousel" data-autoplay="true" data-loop="true">
+  <div class="ui-carousel-viewport">
+    <div class="ui-carousel-track">
+      <div class="ui-carousel-slide">
+        <div class="ui-carousel-card">
+          <span class="ui-carousel-badge">New Release</span>
+          <h3 class="ui-carousel-title">Spring-Motion Primitives</h3>
+          <p class="ui-carousel-desc">Touch and drag with inertial gestures.</p>
+        </div>
+      </div>
+      <div class="ui-carousel-slide">...</div>
+    </div>
+  </div>
+  <div class="ui-carousel-controls">
+    <button type="button" class="ui-carousel-btn ui-carousel-btn--prev">‹</button>
+    <button type="button" class="ui-carousel-btn ui-carousel-btn--next">›</button>
+  </div>
+  <div class="ui-carousel-footer">
+    <div class="ui-carousel-indicators"></div>
+    <span class="ui-carousel-counter">1 / 3</span>
+  </div>
+</div>`,
+    css: `.ui-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+}
+.ui-carousel-track {
+  display: flex;
+  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+}`,
+    js: `import { initCarousel } from '@zak1.uhh/hush-ui';
+
+initCarousel();`
   }
 ];
-
 
 

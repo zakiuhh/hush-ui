@@ -23,6 +23,17 @@ import { initRatings } from './components/rating/rating.js';
 import { initSegmentedControls } from './components/segmented/segmented.js';
 import { initColorPickers } from './components/color-picker/color-picker.js';
 import { initContextMenu } from './components/context-menu/context-menu.js';
+import { initOtpInput } from './components/otp-input/otp-input.js';
+import { initAudioPlayer } from './components/audio-player/audio-player.js';
+import { initTagInput } from './components/tag-input/tag-input.js';
+import { initPasswordMeter } from './components/password-meter/password-meter.js';
+import { initDatePicker } from './components/date-picker/date-picker.js';
+import { initInlineEdit } from './components/inline-edit/inline-edit.js';
+import { initToc } from './components/toc/toc.js';
+import { initPagination } from './components/pagination/pagination.js';
+import { initSparkline } from './components/sparkline/sparkline.js';
+import { initMetricTile } from './components/metric-tile/metric-tile.js';
+import { initCarousel } from './components/carousel/carousel.js';
 import { initTheme, toggleTheme } from './utils/theme.js';
 
 export {
@@ -50,6 +61,17 @@ export {
   initSegmentedControls,
   initColorPickers,
   initContextMenu,
+  initOtpInput,
+  initAudioPlayer,
+  initTagInput,
+  initPasswordMeter,
+  initDatePicker,
+  initInlineEdit,
+  initToc,
+  initPagination,
+  initSparkline,
+  initMetricTile,
+  initCarousel,
   showToast
 };
 
@@ -77,6 +99,17 @@ export function initHushUI() {
   initSegmentedControls();
   initColorPickers();
   initContextMenu();
+  initOtpInput();
+  initAudioPlayer();
+  initTagInput();
+  initPasswordMeter();
+  initDatePicker();
+  initInlineEdit();
+  initToc();
+  initPagination();
+  initSparkline();
+  initMetricTile();
+  initCarousel();
 }
 
 

@@ -1,6 +1,6 @@
 /**
  * Hush UI - Calm, Spring-Motion Hush UI design system
- * @version 1.1.0
+ * @version 1.4.1
  */
 
 export interface ToastOptions {
@@ -34,6 +34,17 @@ export declare function initRatings(container?: HTMLElement | Document): void;
 export declare function initSegmentedControls(container?: HTMLElement | Document): void;
 export declare function initColorPickers(container?: HTMLElement | Document): void;
 export declare function initContextMenu(container?: HTMLElement | Document): void;
+export declare function initOtpInput(container?: HTMLElement | Document): void;
+export declare function initAudioPlayer(container?: HTMLElement | Document): void;
+export declare function initTagInput(container?: HTMLElement | Document): void;
+export declare function initPasswordMeter(container?: HTMLElement | Document): void;
+export declare function initDatePicker(container?: HTMLElement | Document): void;
+export declare function initInlineEdit(container?: HTMLElement | Document): void;
+export declare function initToc(container?: HTMLElement | Document): void;
+export declare function initPagination(container?: HTMLElement | Document): void;
+export declare function initSparkline(container?: HTMLElement | Document): void;
+export declare function initMetricTile(container?: HTMLElement | Document): void;
+export declare function initCarousel(container?: HTMLElement | Document): void;
 export declare function showToast(titleOrOptions?: string | ToastOptions, message?: string, type?: 'default' | 'success' | 'destructive'): void;
 
 /**

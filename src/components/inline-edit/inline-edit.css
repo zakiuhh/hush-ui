@@ -1,0 +1,135 @@
+/* ==========================================================================
+   HUSH UI - INLINE CLICK-TO-EDIT FIELD
+   ========================================================================== */
+
+.ui-inline-edit {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  font-family: var(--font-sans);
+  min-height: 36px;
+}
+
+/* Static View Mode */
+.ui-inline-edit-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px dashed transparent;
+  cursor: pointer;
+  transition: all var(--duration-fast, 150ms) var(--spring-hover);
+  user-select: none;
+}
+
+.ui-inline-edit-view:hover {
+  background-color: var(--muted);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.ui-inline-edit-text {
+  font-size: var(--text-sm, 14px);
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.ui-inline-edit-icon {
+  opacity: 0;
+  color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  transition: opacity 120ms ease, transform 150ms var(--spring-hover);
+  transform: translateX(-2px);
+}
+
+.ui-inline-edit-view:hover .ui-inline-edit-icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Editing Mode */
+.ui-inline-edit-form {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  animation: inlineEditPop 150ms var(--spring-hover);
+}
+
+.ui-inline-edit.is-editing .ui-inline-edit-view {
+  display: none;
+}
+
+.ui-inline-edit.is-editing .ui-inline-edit-form {
+  display: inline-flex;
+}
+
+@keyframes inlineEditPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ui-inline-edit-input {
+  padding: 5px 10px;
+  font-size: var(--text-sm, 14px);
+  font-family: inherit;
+  color: var(--foreground);
+  background-color: var(--card);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-sm, 6px);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 15%, transparent);
+  outline: none;
+  min-width: 140px;
+  transition: border-color 150ms ease;
+}
+
+.ui-inline-edit-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ui-inline-edit-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 120ms var(--spring-hover);
+}
+
+.ui-inline-edit-btn--save {
+  background-color: var(--primary);
+  color: var(--primary-foreground, #FFFFFF);
+  border-color: var(--primary);
+}
+
+.ui-inline-edit-btn--save:hover {
+  transform: scale(1.08);
+}
+
+.ui-inline-edit-btn--cancel {
+  color: var(--muted-foreground);
+}
+
+.ui-inline-edit-btn--cancel:hover {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+/* Success Pulse Feedback */
+.ui-inline-edit.is-saved .ui-inline-edit-view {
+  background-color: color-mix(in srgb, var(--sage, #B8D8D0) 25%, var(--card));
+  border-color: var(--sage, #B8D8D0);
+}

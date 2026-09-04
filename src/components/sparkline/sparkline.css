@@ -1,0 +1,126 @@
+/* ==========================================================================
+   HUSH UI - INTERACTIVE SPARKLINE & MINI TREND CHART
+   ========================================================================== */
+
+.ui-sparkline {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+  height: 90px;
+  user-select: none;
+  font-family: var(--font-sans);
+}
+
+.ui-sparkline-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  cursor: crosshair;
+}
+
+.ui-sparkline-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ui-sparkline-area {
+  fill: url(#ui-sparkline-gradient-default);
+  opacity: 0.25;
+  transition: opacity 200ms ease;
+}
+
+.ui-sparkline-line {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Color Variants */
+.ui-sparkline--sage .ui-sparkline-line { stroke: var(--sage, #B8D8D0); }
+.ui-sparkline--lilac .ui-sparkline-line { stroke: var(--lilac, #C9B8DB); }
+.ui-sparkline--butter .ui-sparkline-line { stroke: var(--butter, #F3E3B5); }
+.ui-sparkline--blush .ui-sparkline-line { stroke: var(--blush, #F0C4C4); }
+
+/* Interactive Crosshair Tracking Line */
+.ui-sparkline-crosshair {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: color-mix(in srgb, var(--primary) 50%, transparent);
+  border-left: 1px dashed var(--primary);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.ui-sparkline-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease, transform 100ms ease;
+}
+
+/* Live Tooltip Value Badge */
+.ui-sparkline-tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  transform: translateX(-50%);
+  background-color: var(--foreground);
+  color: var(--background);
+  font-size: 10.5px;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  padding: 3px 7px;
+  border-radius: var(--radius-xs, 4px);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease, transform 100ms ease;
+  z-index: 10;
+}
+
+.ui-sparkline-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: var(--foreground) transparent transparent transparent;
+}
+
+/* Hover States */
+.ui-sparkline-canvas-wrap.is-hovered .ui-sparkline-crosshair,
+.ui-sparkline-canvas-wrap.is-hovered .ui-sparkline-dot,
+.ui-sparkline-canvas-wrap.is-hovered .ui-sparkline-tooltip {
+  opacity: 1;
+}
+
+.ui-sparkline-canvas-wrap.is-hovered .ui-sparkline-area {
+  opacity: 0.4;
+}
+
+/* Min/Max Static Peak Indicator Dots */
+.ui-sparkline-peak-dot {
+  fill: var(--card);
+  stroke: var(--primary);
+  stroke-width: 1.5;
+  r: 3;
+}
