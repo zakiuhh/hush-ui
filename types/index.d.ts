@@ -1,6 +1,6 @@
 /**
  * Hush UI - Calm, Spring-Motion Hush UI design system
- * @version 1.4.4
+ * @version 1.4.5
  */
 
 export interface ToastOptions {
@@ -12,6 +12,8 @@ export interface ToastOptions {
 
 export declare function initTheme(): void;
 export declare function toggleTheme(): void;
+export declare function copyToClipboard(text: string, successMessage?: string): Promise<boolean>;
+export declare function initMobileMenu(toggleId: string, menuId: string): void;
 export declare function initAccordions(container?: HTMLElement | Document): void;
 export declare function initDrawers(container?: HTMLElement | Document): void;
 export declare function initDropdowns(container?: HTMLElement | Document): void;

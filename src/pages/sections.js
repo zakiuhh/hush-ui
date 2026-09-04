@@ -17,7 +17,9 @@ import {
   initSpotlight,
   initDock,
   initSliders,
-  initSegmentedControls
+  initSegmentedControls,
+  copyToClipboard,
+  initMobileMenu
 } from '../index.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -460,20 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (activeTab === 'html' && code.includes('lucide') && !code.includes('Lucide (CDN:')) {
         code = `<!-- Icons: Lucide (CDN: https://unpkg.com/lucide@latest | React: npm i lucide-react) -->\n${code}`;
       }
-      try {
-        await navigator.clipboard.writeText(code);
-        showToast({
-          title: 'Code Copied',
-          message: `${activeTab.toUpperCase()} template copied to clipboard.`,
-          type: 'success'
-        });
-      } catch (err) {
-        showToast({
-          title: 'Copy Failed',
-          message: 'Unable to copy code to clipboard.',
-          type: 'destructive'
-        });
-      }
+      await copyToClipboard(code, `${activeTab.toUpperCase()} template copied to clipboard.`);
     });
   }
 
@@ -525,39 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Mobile Navigation Drawer Toggle
-  const mobileToggleBtn = document.getElementById('sections-mobile-toggle');
-  const mobileMenu = document.getElementById('sections-mobile-menu');
-
-  if (mobileToggleBtn && mobileMenu) {
-    const openIcon = mobileToggleBtn.querySelector('.mobile-toggle-open');
-    const closeIcon = mobileToggleBtn.querySelector('.mobile-toggle-close');
-
-    const toggleMenu = (show) => {
-      const isOpen = typeof show === 'boolean' ? show : !mobileMenu.classList.contains('is-open');
-      mobileMenu.classList.toggle('is-open', isOpen);
-      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-      mobileToggleBtn.setAttribute('aria-expanded', String(isOpen));
-      if (openIcon) openIcon.style.display = isOpen ? 'none' : 'block';
-      if (closeIcon) closeIcon.style.display = isOpen ? 'block' : 'none';
-    };
-
-    mobileToggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.contains(e.target) && !mobileToggleBtn.contains(e.target)) {
-        toggleMenu(false);
-      }
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
-        toggleMenu(false);
-      }
-    });
-  }
+  initMobileMenu('sections-mobile-toggle', 'sections-mobile-menu');
 
   // Initial Mount
   renderFilters();

@@ -31,7 +31,9 @@ import {
   initPagination,
   initSparkline,
   initMetricTile,
-  initCarousel
+  initCarousel,
+  copyToClipboard,
+  initMobileMenu
 } from '../index.js';
 
 // Expose toast triggers for interactive preview demos
@@ -716,25 +718,19 @@ document.addEventListener('DOMContentLoaded', () => {
   copyBtn?.addEventListener('click', async () => {
     if (!activeComponent) return;
     const textToCopy = generateCustomizedCode();
+    const success = await copyToClipboard(
+      textToCopy,
+      `${activeComponent.name} ${activeTab.toUpperCase()} copied to clipboard.`
+    );
 
-    try {
-      await navigator.clipboard.writeText(textToCopy);
-      if (copyBtnText) copyBtnText.textContent = 'Copied!';
+    if (success && copyBtnText) {
+      copyBtnText.textContent = 'Copied!';
       copyBtn.style.backgroundColor = 'var(--secondary)';
-
-      showToast({
-        title: 'Code Copied',
-        message: `${activeComponent.name} ${activeTab.toUpperCase()} copied to clipboard.`,
-        type: 'success',
-        duration: 2500
-      });
 
       setTimeout(() => {
         if (copyBtnText) copyBtnText.textContent = 'Copy Code';
         copyBtn.style.backgroundColor = '';
       }, 1800);
-    } catch (err) {
-      console.error('Clipboard copy failed:', err);
     }
   });
 
@@ -869,39 +865,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Mobile Navigation Drawer Toggle
-  const mobileToggleBtn = document.getElementById('components-mobile-toggle');
-  const mobileMenu = document.getElementById('components-mobile-menu');
-
-  if (mobileToggleBtn && mobileMenu) {
-    const openIcon = mobileToggleBtn.querySelector('.mobile-toggle-open');
-    const closeIcon = mobileToggleBtn.querySelector('.mobile-toggle-close');
-
-    const toggleMenu = (show) => {
-      const isOpen = typeof show === 'boolean' ? show : !mobileMenu.classList.contains('is-open');
-      mobileMenu.classList.toggle('is-open', isOpen);
-      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-      mobileToggleBtn.setAttribute('aria-expanded', String(isOpen));
-      if (openIcon) openIcon.style.display = isOpen ? 'none' : 'block';
-      if (closeIcon) closeIcon.style.display = isOpen ? 'block' : 'none';
-    };
-
-    mobileToggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.contains(e.target) && !mobileToggleBtn.contains(e.target)) {
-        toggleMenu(false);
-      }
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
-        toggleMenu(false);
-      }
-    });
-  }
+  initMobileMenu('components-mobile-toggle', 'components-mobile-menu');
 
   // Initial Render
   renderCategoryPills();

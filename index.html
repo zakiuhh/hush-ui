@@ -586,7 +586,7 @@
       <div>
         <div class="landing-pill">
           <svg class="lucide lucide-sparkles" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-          <span>Production Design System · v1.4.4</span>
+          <span>Production Design System · v1.4.5</span>
         </div>
         <h1 class="landing-title">
           Soft hues. Spring motion. Calmer interfaces.
@@ -1142,16 +1142,16 @@
     </div>
   </div>
 
-  <!-- Vite ES Module Script -->
   <script type="module">
-    import { initHushUI, toggleTheme, showToast } from '/src/index.js';
+    import { initHushUI, toggleTheme, showToast, copyToClipboard, initMobileMenu } from '/src/index.js';
 
-    // Initialize all components & tokens
+    // Global Component Initialization
     initHushUI();
 
-    // Hook theme toggle listener
+    // Bind Theme Toggle Orb
     document.getElementById('theme-btn')?.addEventListener('click', toggleTheme);
 
+    // Global Toast Hook for inline CTA demos
     window.triggerHomeToast = function(msg) {
       showToast({
         title: 'System Notification',
@@ -1161,36 +1161,26 @@
     };
 
     // Installation Command Copy Handlers
-    function copyTextWithFeedback(text, btnElement) {
+    async function copyTextWithFeedback(text, btnElement) {
       if (!text) return;
-      navigator.clipboard.writeText(text).then(() => {
-        showToast({
-          title: 'Copied to Clipboard',
-          message: text,
-          type: 'success',
-          duration: 3000
-        });
+      const success = await copyToClipboard(text, text);
+      if (success && btnElement) {
+        btnElement.classList.add('is-copied');
+        const copyIcon = btnElement.querySelector('.icon-copy');
+        const checkIcon = btnElement.querySelector('.icon-check');
+        const textSpan = btnElement.querySelector('.copy-text');
 
-        if (btnElement) {
-          btnElement.classList.add('is-copied');
-          const copyIcon = btnElement.querySelector('.icon-copy');
-          const checkIcon = btnElement.querySelector('.icon-check');
-          const textSpan = btnElement.querySelector('.copy-text');
+        if (copyIcon) copyIcon.style.display = 'none';
+        if (checkIcon) checkIcon.style.display = 'inline-block';
+        if (textSpan) textSpan.textContent = 'Copied!';
 
-          if (copyIcon) copyIcon.style.display = 'none';
-          if (checkIcon) checkIcon.style.display = 'inline-block';
-          if (textSpan) textSpan.textContent = 'Copied!';
-
-          setTimeout(() => {
-            btnElement.classList.remove('is-copied');
-            if (copyIcon) copyIcon.style.display = 'inline-block';
-            if (checkIcon) checkIcon.style.display = 'none';
-            if (textSpan) textSpan.textContent = 'Copy';
-          }, 2000);
-        }
-      }).catch(err => {
-        console.error('Failed to copy: ', err);
-      });
+        setTimeout(() => {
+          btnElement.classList.remove('is-copied');
+          if (copyIcon) copyIcon.style.display = 'inline-block';
+          if (checkIcon) checkIcon.style.display = 'none';
+          if (textSpan) textSpan.textContent = 'Copy';
+        }, 2000);
+      }
     }
 
     // Attach click listeners to install terminals & copy buttons
@@ -1210,39 +1200,7 @@
     });
 
     // Mobile Navigation Drawer Toggle
-    const mobileToggleBtn = document.getElementById('landing-mobile-toggle');
-    const mobileMenu = document.getElementById('landing-mobile-menu');
-
-    if (mobileToggleBtn && mobileMenu) {
-      const openIcon = mobileToggleBtn.querySelector('.mobile-toggle-open');
-      const closeIcon = mobileToggleBtn.querySelector('.mobile-toggle-close');
-
-      const toggleMenu = (show) => {
-        const isOpen = typeof show === 'boolean' ? show : !mobileMenu.classList.contains('is-open');
-        mobileMenu.classList.toggle('is-open', isOpen);
-        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-        mobileToggleBtn.setAttribute('aria-expanded', String(isOpen));
-        if (openIcon) openIcon.style.display = isOpen ? 'none' : 'block';
-        if (closeIcon) closeIcon.style.display = isOpen ? 'block' : 'none';
-      };
-
-      mobileToggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!mobileMenu.contains(e.target) && !mobileToggleBtn.contains(e.target)) {
-          toggleMenu(false);
-        }
-      });
-
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
-          toggleMenu(false);
-        }
-      });
-    }
+    initMobileMenu('landing-mobile-toggle', 'landing-mobile-menu');
   </script>
 </body>
 </html>
