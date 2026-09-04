@@ -1,6 +1,7 @@
 /**
  * Hush UI - Color Swatch & Hue Picker Component
  */
+import { copyToClipboard } from '../../utils/clipboard.js';
 
 function hslToHex(h, s, l) {
   l /= 100;
@@ -86,15 +87,16 @@ export function initColorPickers(container = document) {
 
     // 3. One-Click Copy Hex
     if (copyBtn && hexText) {
-      copyBtn.addEventListener('click', () => {
+      copyBtn.addEventListener('click', async () => {
         const text = hexText.textContent.trim();
-        navigator.clipboard.writeText(text).then(() => {
+        const ok = await copyToClipboard(text, `Hex ${text} copied`);
+        if (ok) {
           const originalText = copyBtn.textContent;
           copyBtn.textContent = 'Copied!';
           setTimeout(() => {
             copyBtn.textContent = originalText;
           }, 1500);
-        });
+        }
       });
     }
   });

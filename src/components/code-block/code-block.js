@@ -1,6 +1,8 @@
 /**
  * Hush UI - Code Block & File Tree Component
  */
+import { copyToClipboard } from '../../utils/clipboard.js';
+
 export function initCodeBlocks(container = document) {
   const blocks = container.querySelectorAll('.ui-code-block');
 
@@ -21,9 +23,10 @@ export function initCodeBlocks(container = document) {
     });
 
     if (copyBtn && codeEl) {
-      copyBtn.addEventListener('click', () => {
+      copyBtn.addEventListener('click', async () => {
         const text = codeEl.textContent || '';
-        navigator.clipboard.writeText(text).then(() => {
+        const ok = await copyToClipboard(text, 'Code snippet copied');
+        if (ok) {
           copyBtn.classList.add('is-copied');
           const btnText = copyBtn.querySelector('span');
           const prevText = btnText ? btnText.textContent : 'Copy';
@@ -32,7 +35,7 @@ export function initCodeBlocks(container = document) {
             copyBtn.classList.remove('is-copied');
             if (btnText) btnText.textContent = prevText;
           }, 2000);
-        });
+        }
       });
     }
   });

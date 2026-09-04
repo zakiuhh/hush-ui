@@ -37,12 +37,15 @@ import { initCarousel } from './components/carousel/carousel.js';
 import { initTheme, toggleTheme } from './utils/theme.js';
 import { copyToClipboard } from './utils/clipboard.js';
 import { initMobileMenu } from './utils/dom.js';
+import { escapeHtml, highlightCode } from './utils/highlight.js';
 
 export {
   initTheme,
   toggleTheme,
   copyToClipboard,
   initMobileMenu,
+  escapeHtml,
+  highlightCode,
   initAccordions,
   initDrawers,
   initDropdowns,
