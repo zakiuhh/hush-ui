@@ -12,6 +12,7 @@ export interface ToastOptions {
 
 export declare function initTheme(): void;
 export declare function toggleTheme(): void;
+export declare function updateFavicon(isDark?: boolean): void;
 export declare function copyToClipboard(text: string, successMessage?: string): Promise<boolean>;
 export declare function initMobileMenu(toggleId: string, menuId: string): void;
 export declare function escapeHtml(str: string): string;

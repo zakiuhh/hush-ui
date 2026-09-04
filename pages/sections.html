@@ -13,6 +13,21 @@
   <!-- Master Stylesheet Entry -->
   <link rel="stylesheet" href="/src/index.css" />
   <link rel="stylesheet" href="/src/pages/sections.css" />
+
+  <!-- Theme-Synced Favicon -->
+  <link id="app-favicon" rel="icon" type="image/svg+xml" href="/assets/hush-ui-icon-coil-light.svg" />
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = saved === 'dark' || (!saved && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        var fav = document.getElementById('app-favicon');
+        if (fav) fav.href = '/assets/hush-ui-icon-coil-dark.svg';
+      }
+    })();
+  </script>
 </head>
 <body class="sections-page-body">
 
@@ -26,9 +41,10 @@
           <span>Home</span>
         </a>
         <div class="sections-brand-badge">
-          <span class="brand-sparkle" aria-hidden="true">
-            <svg class="lucide lucide-sparkles" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-          </span>
+          <div class="hush-logo-box">
+            <img src="/assets/hush-ui-icon-coil-light.svg" alt="Hush UI Logo" class="hush-logo hush-logo--light" width="24" height="24" />
+            <img src="/assets/hush-ui-icon-coil-dark.svg" alt="Hush UI Logo" class="hush-logo hush-logo--dark" width="24" height="24" />
+          </div>
           <span class="brand-name">Hush UI</span>
           <span class="brand-sep sec-desktop-only">/</span>
           <span class="brand-page sec-desktop-only">Sections</span>

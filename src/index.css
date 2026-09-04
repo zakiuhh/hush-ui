@@ -1,5 +1,6 @@
 /* Tokens & Base */
 @import './tokens/variables.css';
+@import './components/brand/brand.css';
 
 /* Components */
 @import './components/accordion/accordion.css';

@@ -34,7 +34,7 @@ import { initPagination } from './components/pagination/pagination.js';
 import { initSparkline } from './components/sparkline/sparkline.js';
 import { initMetricTile } from './components/metric-tile/metric-tile.js';
 import { initCarousel } from './components/carousel/carousel.js';
-import { initTheme, toggleTheme } from './utils/theme.js';
+import { initTheme, toggleTheme, updateFavicon } from './utils/theme.js';
 import { copyToClipboard } from './utils/clipboard.js';
 import { initMobileMenu } from './utils/dom.js';
 import { escapeHtml, highlightCode } from './utils/highlight.js';
@@ -42,6 +42,7 @@ import { escapeHtml, highlightCode } from './utils/highlight.js';
 export {
   initTheme,
   toggleTheme,
+  updateFavicon,
   copyToClipboard,
   initMobileMenu,
   escapeHtml,

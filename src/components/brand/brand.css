@@ -1,0 +1,61 @@
+/* ==========================================================================
+   HUSH UI BRAND LOGO COMPONENT
+   Auto-syncs light/dark coils with current theme and spring interactions
+   ========================================================================== */
+
+.hush-logo-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+  position: relative;
+  border-radius: var(--radius-sm, 10px);
+}
+
+.hush-logo {
+  display: block;
+  height: auto;
+  border-radius: var(--radius-sm, 10px);
+  object-fit: contain;
+  transition: transform var(--duration-fast, 150ms) var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)),
+              box-shadow var(--duration-fast, 150ms) var(--ease-soft-out, ease-out);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Theme Switching:
+   Default (Light theme): Show light coil logo
+   Dark mode (.dark): Show dark coil logo
+*/
+.hush-logo--dark {
+  display: none !important;
+}
+
+.hush-logo--light {
+  display: block !important;
+}
+
+.dark .hush-logo--dark {
+  display: block !important;
+}
+
+.dark .hush-logo--light {
+  display: none !important;
+}
+
+/* Subtle Spring Hover Feedback */
+.landing-brand:hover .hush-logo,
+.components-brand-badge:hover .hush-logo,
+.sections-brand-badge:hover .hush-logo,
+.hush-logo-box:hover .hush-logo {
+  transform: scale(1.06) rotate(-3deg);
+}
+
+.landing-brand:active .hush-logo,
+.components-brand-badge:active .hush-logo,
+.sections-brand-badge:active .hush-logo,
+.hush-logo-box:active .hush-logo {
+  transform: scale(0.96) rotate(0deg);
+}
+
