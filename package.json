@@ -45,6 +45,9 @@
     "url": "https://github.com/zakiuhh/hush-ui/issues"
   },
   "homepage": "https://github.com/zakiuhh/hush-ui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "build": "npm run build:docs && npm run build:lib",
