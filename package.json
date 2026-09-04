@@ -1,6 +1,6 @@
 {
   "name": "@zak1.uhh/hush-ui",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A calm, spring-motion Hush UI design system with 51 accessible primitives and 28 responsive sections for vanilla JS, React, Vue, Svelte, and modern web applications.",
   "type": "module",
   "main": "./dist/hush-ui.umd.cjs",
@@ -18,7 +18,11 @@
   },
   "files": [
     "dist",
-    "src",
+    "src/components",
+    "src/tokens",
+    "src/utils",
+    "src/index.js",
+    "src/index.css",
     "types",
     "README.md",
     "LICENSE"
@@ -53,7 +57,7 @@
     "build": "npm run build:docs && npm run build:lib",
     "build:lib": "vite build --config vite.lib.config.ts && node -e \"require('fs').copyFileSync('types/index.d.ts', 'dist/index.d.ts')\"",
     "build:docs": "vite build --config vite.config.ts",
-    "preview": "vite preview",
+    "preview": "vite preview --outDir dist-docs",
     "prepublishOnly": "npm run build:lib"
   },
   "devDependencies": {
