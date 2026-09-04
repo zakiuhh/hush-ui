@@ -1,6 +1,6 @@
 /**
  * Hush UI - Calm, Spring-Motion Hush UI design system
- * @version 1.4.2
+ * @version 1.4.3
  */
 
 export interface ToastOptions {

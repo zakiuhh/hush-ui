@@ -54,3 +54,7 @@
 @import './components/sparkline/sparkline.css';
 @import './components/metric-tile/metric-tile.css';
 @import './components/carousel/carousel.css';
+
+/* Layout Sections */
+@import './sections/sections.css';
+
