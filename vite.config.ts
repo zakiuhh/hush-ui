@@ -1,6 +1,6 @@
 import { defineConfig, Plugin } from 'vite';
 import { resolve } from 'path';
-import { existsSync, mkdirSync, copyFileSync, readdirSync } from 'fs';
+import { existsSync, mkdirSync, cpSync } from 'fs';
 
 function syncAssetsPlugin(): Plugin {
   const syncAssets = () => {
@@ -8,9 +8,7 @@ function syncAssetsPlugin(): Plugin {
     const publicDir = resolve(__dirname, 'public/assets');
     if (existsSync(srcDir)) {
       mkdirSync(publicDir, { recursive: true });
-      for (const file of readdirSync(srcDir)) {
-        copyFileSync(resolve(srcDir, file), resolve(publicDir, file));
-      }
+      cpSync(srcDir, publicDir, { recursive: true });
     }
   };
 
@@ -35,6 +33,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         components: resolve(__dirname, 'pages/components.html'),
         sections: resolve(__dirname, 'pages/sections.html'),
+        pro: resolve(__dirname, 'pages/pro.html'),
       },
     },
   },

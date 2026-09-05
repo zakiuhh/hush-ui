@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access Hush UI Pro — Coming Soon | Complete Frontend Admin Dashboard</title>
+
+  <!-- Google Fonts: Fraunces, Manrope, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Theme-Synced Favicon -->
+  <link id="app-favicon" rel="icon" type="image/svg+xml" href="/assets/hush-ui-icon-coil-light.svg" />
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = saved === 'dark' || (!saved && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        var fav = document.getElementById('app-favicon');
+        if (fav) fav.href = '/assets/hush-ui-icon-coil-dark.svg';
+      }
+    })();
+  </script>
+
+  <!-- Script Module Entry -->
+  <script type="module" src="/src/pages/pro.js"></script>
+</head>
+<body class="pro-page-body">
+
+  <div class="pro-page-wrapper">
+
+    <!-- 1. Top Navigation Bar -->
+    <header class="pro-top-nav">
+      <div class="pro-nav-left">
+        <a href="/" class="ui-button ui-button--ghost pro-back-btn" style="gap: 6px;">
+          <svg class="lucide lucide-arrow-left" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          <span>Home</span>
+        </a>
+        <div class="pro-brand-badge">
+          <div class="hush-logo-box">
+            <img src="/assets/hush-ui-icon-coil-light.svg" alt="Hush UI Logo" class="hush-logo hush-logo--light" width="24" height="24" />
+            <img src="/assets/hush-ui-icon-coil-dark.svg" alt="Hush UI Logo" class="hush-logo hush-logo--dark" width="24" height="24" />
+          </div>
+          <span class="brand-name">Hush UI</span>
+          <span class="brand-sep">/</span>
+          <span class="pro-brand-pill">✦ Pro</span>
+        </div>
+      </div>
+
+      <div class="pro-nav-right">
+        <a href="/pages/components.html" class="ui-button ui-button--ghost pro-desktop-only" style="font-size: var(--text-xs); padding: 6px 14px; gap: 6px;">
+          <svg class="lucide lucide-layers" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+          </svg>
+          <span>Components (51)</span>
+        </a>
+
+        <a href="/pages/sections.html" class="ui-button ui-button--ghost pro-desktop-only" style="font-size: var(--text-xs); padding: 6px 14px; gap: 6px;">
+          <svg class="lucide lucide-grid" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
+          </svg>
+          <span>Sections (28+)</span>
+        </a>
+
+        <a href="https://github.com/zakiuhh/hush-ui" target="_blank" rel="noreferrer" class="ui-button ui-button--ghost pro-desktop-only" style="font-size: var(--text-xs); padding: 6px 12px; gap: 6px;" title="View repository on GitHub">
+          <svg class="lucide lucide-github" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3.5 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+
+        <!-- Sky Morphing Theme Toggle -->
+        <button id="theme-btn" class="ui-theme-toggle" type="button" aria-label="Toggle light and dark theme">
+          <div class="ui-theme-stars" aria-hidden="true">
+            <span class="ui-star ui-star--1"></span>
+            <span class="ui-star ui-star--2"></span>
+            <span class="ui-star ui-star--3"></span>
+            <span class="ui-star ui-star--4"></span>
+          </div>
+          <div class="ui-theme-orb" aria-hidden="true">
+            <span class="ui-moon-crater ui-moon-crater--1"></span>
+            <span class="ui-moon-crater ui-moon-crater--2"></span>
+            <span class="ui-moon-crater ui-moon-crater--3"></span>
+          </div>
+          <svg class="ui-theme-cloud" viewBox="0 0 34 22" fill="none" aria-hidden="true">
+            <path d="M7 19h20a5 5 0 0 0 1.2-9.85A6.5 6.5 0 0 0 16 6a6.5 6.5 0 0 0-6.1 4.2A5 5 0 0 0 7 19z" fill="#FFFFFF" fill-opacity="0.92"/>
+            <path d="M12 19h14a4 4 0 0 0 0-8 5 5 0 0 0-9.6-1.5A4 4 0 0 0 12 19z" fill="#FFFFFF"/>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="pro-mobile-toggle" class="ui-button ui-button--ghost pro-mobile-toggle" type="button" aria-label="Toggle mobile menu" aria-expanded="false" style="padding: 6px 10px;">
+          <svg class="mobile-toggle-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg class="mobile-toggle-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Navigation Drawer -->
+      <nav id="pro-mobile-menu" class="pro-mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+        <div class="pro-mobile-menu-inner">
+          <a href="/" class="pro-mobile-nav-item">
+            <svg class="lucide lucide-arrow-left" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            <span>Home Overview</span>
+          </a>
+          <a href="/pages/components.html" class="pro-mobile-nav-item">
+            <svg class="lucide lucide-layers" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+            <span>Components (51 Primitives)</span>
+          </a>
+          <a href="/pages/sections.html" class="pro-mobile-nav-item">
+            <svg class="lucide lucide-grid" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+            <span>Sections (28+ Templates)</span>
+          </a>
+          <a href="https://github.com/zakiuhh/hush-ui" target="_blank" rel="noreferrer" class="pro-mobile-nav-item">
+            <svg class="lucide lucide-github" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3.5 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 2. Hero Section: Coming Soon & Frontend Dashboard Introduction -->
+    <section class="pro-hero-section">
+      <div class="pro-coming-badge">
+        <span class="pro-pulse-dot" aria-hidden="true"></span>
+        <span>Hush UI Pro · Coming Soon</span>
+      </div>
+
+      <h1 class="pro-hero-title">
+        The Complete Frontend <br />
+        <span class="pro-hero-title-accent">Admin Dashboard Suite</span>
+      </h1>
+
+      <p class="pro-hero-subtitle">
+        A calm, production-grade Admin Dashboard application built entirely with Hush UI components, tokenized spring micro-interactions, and zero external framework bloat. Currently in active pre-release crafting.
+      </p>
+
+      <!-- Early Access Notification Form (NO Purchase/Get Pro links) -->
+      <form id="pro-notify-form" class="pro-notify-container" aria-label="Early Access Notification">
+        <input 
+          id="pro-notify-input" 
+          type="email" 
+          class="pro-notify-input" 
+          placeholder="Enter your work email for early access..." 
+          required 
+          autocomplete="email" 
+        />
+        <button type="submit" class="ui-button ui-button--primary" style="padding: 10px 20px; font-weight: 600; white-space: nowrap; gap: 6px;">
+          <span>Notify Me When Ready</span>
+          <svg class="lucide lucide-bell" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        </button>
+      </form>
+      <div class="pro-notify-note">
+        <svg class="lucide lucide-shield-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+        <span>Zero spam. Direct ping the moment the frontend dashboard repository drops.</span>
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="pro-metrics-bar">
+        <div class="pro-metric-pill">
+          <svg class="lucide lucide-layout" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          <span>12+ Core Dashboard Views</span>
+        </div>
+        <div class="pro-metric-pill">
+          <svg class="lucide lucide-sun-moon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a2.83 2.83 0 0 0 4 4 4 4 0 1 1-4-4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.3 17.7-1.4 1.4"/><path d="m19.1 4.9-1.4 1.4"/></svg>
+          <span>Dual Light & Dark Theme Synced</span>
+        </div>
+        <div class="pro-metric-pill">
+          <svg class="lucide lucide-sparkles" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          <span>Tokenized Spring Micro-Interactions</span>
+        </div>
+        <div class="pro-metric-pill">
+          <svg class="lucide lucide-table" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+          <span>Production-Ready Data Tables</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Flagship Hero Preview: Full Dashboard Overview Mockup -->
+    <section class="pro-flagship-section">
+      <div class="pro-browser-frame">
+        <div class="pro-browser-header">
+          <div class="pro-browser-dots" aria-hidden="true">
+            <span class="pro-dot pro-dot--red"></span>
+            <span class="pro-dot pro-dot--yellow"></span>
+            <span class="pro-dot pro-dot--green"></span>
+          </div>
+          <div class="pro-browser-address">
+            <svg class="lucide lucide-lock" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>https://pro.hushui.app/admin</span>
+          </div>
+          <div class="pro-browser-actions">
+            <span class="pro-brand-pill" style="font-size: 9px; padding: 2px 6px;">Live Demo</span>
+          </div>
+        </div>
+
+        <div class="pro-browser-canvas" data-pro-inspect="overview" title="Click to inspect Full Dashboard Overview">
+          <img src="/assets/display/full hashboard ss.png" alt="Hush UI Pro Full Dashboard Overview Screen" loading="eager" />
+          <div class="pro-canvas-overlay">
+            <div class="pro-zoom-pill">
+              <svg class="lucide lucide-maximize-2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg>
+              <span>Click to Inspect Fullscreen Overview</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Module Explorer & Screen Previews -->
+    <section class="pro-explorer-section">
+      <div class="pro-explorer-header">
+        <div class="pro-explorer-info">
+          <h2 class="pro-section-title">Explore The Dashboard Modules</h2>
+          <p class="pro-section-subtitle">
+            Every page is built with modular components, smooth spring physics, responsive layouts, and automatic theme pairing.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="pro-filter-tabs" role="tablist" aria-label="Dashboard module filters">
+          <button class="pro-filter-btn is-active" data-pro-filter="all" type="button">All Views (12)</button>
+          <button class="pro-filter-btn" data-pro-filter="ecommerce" type="button">E-Commerce Suite</button>
+          <button class="pro-filter-btn" data-pro-filter="settings" type="button">Platform Settings</button>
+          <button class="pro-filter-btn" data-pro-filter="ux" type="button">UX & Overlays</button>
+        </div>
+      </div>
+
+      <!-- Modules Cards Grid -->
+      <div class="pro-modules-grid">
+
+        <!-- 1. Orders & Transactions -->
+        <article class="pro-module-card" data-card-category="ecommerce">
+          <div class="pro-card-preview" data-pro-inspect="orders" title="Inspect Orders & Transactions">
+            <img src="/assets/display/ecommerce - orders and Transactions (light).png" alt="Orders and Transactions (Light)" class="pro-img-light" loading="lazy" />
+            <img src="/assets/display/ecommerce - orders and Transactions.png" alt="Orders and Transactions (Dark)" class="pro-img-dark" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">E-Commerce</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Data Table</span>
+              </div>
+              <h3 class="pro-card-title">Orders & Transactions</h3>
+              <p class="pro-card-desc">
+                High-density data grid featuring multi-tier order tracking, delivery tags, instant status filtering, and batch fulfillment actions.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Filterable · Sortable</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="orders">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Customers Directory -->
+        <article class="pro-module-card" data-card-category="ecommerce">
+          <div class="pro-card-preview" data-pro-inspect="customers" title="Inspect Customers Directory">
+            <img src="/assets/display/ecommerce - customers directory (light).png" alt="Customers Directory (Light)" class="pro-img-light" loading="lazy" />
+            <img src="/assets/display/ecommerce - customers directory (dark).png" alt="Customers Directory (Dark)" class="pro-img-dark" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">E-Commerce</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Directory</span>
+              </div>
+              <h3 class="pro-card-title">Customers Directory</h3>
+              <p class="pro-card-desc">
+                Customer profiles with lifetime spend metrics, activity tags, contact details, and pagination controls.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Profiles · Metrics</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="customers">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Product Inventory & Catalog -->
+        <article class="pro-module-card" data-card-category="ecommerce">
+          <div class="pro-card-preview" data-pro-inspect="inventory" title="Inspect Product Inventory">
+            <img src="/assets/display/ecommerce - product inventory (light).png" alt="Product Inventory (Light)" class="pro-img-light" loading="lazy" />
+            <img src="/assets/display/ecommerce - product inventory (dark).png" alt="Product Inventory (Dark)" class="pro-img-dark" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">E-Commerce</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Catalog</span>
+              </div>
+              <h3 class="pro-card-title">Product Inventory & Catalog</h3>
+              <p class="pro-card-desc">
+                Stock monitoring with SKU indicators, low-stock alerts, inline pricing, and catalog search.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>SKU · Stock Status</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="inventory">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. Discounts & Promotions -->
+        <article class="pro-module-card" data-card-category="ecommerce">
+          <div class="pro-card-preview" data-pro-inspect="promos" title="Inspect Discounts & Promotions">
+            <img src="/assets/display/ecommerce - discount and promos (light).png" alt="Discounts & Promos (Light)" class="pro-img-light" loading="lazy" />
+            <img src="/assets/display/ecommerce - discount and promos (dark).png" alt="Discounts & Promos (Dark)" class="pro-img-dark" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">E-Commerce</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Campaigns</span>
+              </div>
+              <h3 class="pro-card-title">Discounts & Promotions</h3>
+              <p class="pro-card-desc">
+                Campaign builder for coupon codes, percentage reductions, validity countdowns, and performance trackers.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Coupons · Rules</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="promos">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. Workspace Settings -->
+        <article class="pro-module-card" data-card-category="settings">
+          <div class="pro-card-preview" data-pro-inspect="workspace" title="Inspect Workspace Settings">
+            <img src="/assets/display/workspace settings (light).png" alt="Workspace Settings (Light)" class="pro-img-light" loading="lazy" />
+            <img src="/assets/display/workspace settings (dark).png" alt="Workspace Settings (Dark)" class="pro-img-dark" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">Settings</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Org Controls</span>
+              </div>
+              <h3 class="pro-card-title">Workspace & Team</h3>
+              <p class="pro-card-desc">
+                Team member seats, organizational profile, domain configuration, and branding customization.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Team · Domains</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="workspace">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. Security & API Keys -->
+        <article class="pro-module-card" data-card-category="settings">
+          <div class="pro-card-preview" data-pro-inspect="security" title="Inspect Security & API Keys">
+            <img src="/assets/display/security and api keys (light).png" alt="Security & API Keys (Light)" class="pro-img-light" loading="lazy" />
+            <img src="/assets/display/security and api keys (dark).png" alt="Security & API Keys (Dark)" class="pro-img-dark" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">Settings</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Security</span>
+              </div>
+              <h3 class="pro-card-title">Security & API Keys</h3>
+              <p class="pro-card-desc">
+                Bearer token generation, webhook configurations, 2FA status, and cryptographic audit records.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Tokens · Webhooks</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="security">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7. Billing & Subscriptions -->
+        <article class="pro-module-card" data-card-category="settings">
+          <div class="pro-card-preview" data-pro-inspect="billing" title="Inspect Billing & Subscriptions">
+            <img src="/assets/display/billing and subscriptions (light).png" alt="Billing & Subscriptions (Light)" class="pro-img-light" loading="lazy" />
+            <img src="/assets/display/billing and subscriptions (dark).png" alt="Billing & Subscriptions (Dark)" class="pro-img-dark" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">Settings</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Billing</span>
+              </div>
+              <h3 class="pro-card-title">Billing & Invoices</h3>
+              <p class="pro-card-desc">
+                Tier usage visualizers, saved payment methods, billing address, and downloadable invoice statements.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Invoices · Cards</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="billing">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 8. Real-Time Notification Panel -->
+        <article class="pro-module-card" data-card-category="ux">
+          <div class="pro-card-preview" data-pro-inspect="notifications" title="Inspect Notification Drawer">
+            <img src="/assets/display/notification panel (light).png" alt="Notification Drawer (Light)" class="pro-img-light" loading="lazy" />
+            <img src="/assets/display/notification panel (dark).png" alt="Notification Drawer (Dark)" class="pro-img-dark" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">UX & Overlays</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Drawer</span>
+              </div>
+              <h3 class="pro-card-title">Notification Drawer</h3>
+              <p class="pro-card-desc">
+                Slide-out notification panel with system alerts, order updates, priority filters, and unread badges.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Slide-Out · Unread Badges</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="notifications">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 9. Profile Dropdown Menu -->
+        <article class="pro-module-card" data-card-category="ux">
+          <div class="pro-card-preview" data-pro-inspect="profile" title="Inspect Profile Menu">
+            <img src="/assets/display/profile dropdown (light).png" alt="Profile Dropdown (Light)" class="pro-img-light" loading="lazy" />
+            <img src="/assets/display/profile dropdown (dark).png" alt="Profile Dropdown (Dark)" class="pro-img-dark" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">UX & Overlays</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Popover</span>
+              </div>
+              <h3 class="pro-card-title">Profile & Account Menu</h3>
+              <p class="pro-card-desc">
+                Keyboard-accessible popover menu with avatar status, fast theme switching, and account shortcuts.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Fast Toggle · Keyboard Acc.</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="profile">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 10. Documentation Guide -->
+        <article class="pro-module-card" data-card-category="ux">
+          <div class="pro-card-preview" data-pro-inspect="docs" title="Inspect Documentation Guide">
+            <img src="/assets/display/documentation and guide (light).png" alt="Documentation Guide (Light)" class="pro-img-light" loading="lazy" />
+            <img src="/assets/display/documentation and guide (dark).png" alt="Documentation Guide (Dark)" class="pro-img-dark" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">UX & Overlays</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Developer Docs</span>
+              </div>
+              <h3 class="pro-card-title">Documentation & Guide</h3>
+              <p class="pro-card-desc">
+                Embedded developer documentation with syntax-highlighted code blocks, copy snippets, and API quick links.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Code Blocks · Markdown</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="docs">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 11. Deep Analytics -->
+        <article class="pro-module-card" data-card-category="ecommerce">
+          <div class="pro-card-preview" data-pro-inspect="analytics" title="Inspect Deep Analytics">
+            <img src="/assets/display/analytics.png" alt="Deep Analytics Screen" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">E-Commerce</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Telemetry</span>
+              </div>
+              <h3 class="pro-card-title">Deep Analytics</h3>
+              <p class="pro-card-desc">
+                Real-time conversion metrics, customer acquisition graphs, traffic sources, and performance telemetry.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Curves · Real-Time</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="analytics">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 12. Full Dashboard Overview -->
+        <article class="pro-module-card" data-card-category="all">
+          <div class="pro-card-preview" data-pro-inspect="overview" title="Inspect Overview Screen">
+            <img src="/assets/display/full hashboard ss.png" alt="Full Dashboard Overview" loading="lazy" />
+            <div class="pro-card-hover-tag">
+              <svg class="lucide lucide-zoom-in" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>
+              <span>Inspect</span>
+            </div>
+          </div>
+          <div class="pro-card-body">
+            <div class="pro-card-meta">
+              <div class="pro-card-top-row">
+                <span class="pro-card-cat">Flagship</span>
+                <span class="pro-metric-pill" style="font-size:10px; padding:2px 6px;">Executive</span>
+              </div>
+              <h3 class="pro-card-title">Full Dashboard Overview</h3>
+              <p class="pro-card-desc">
+                Executive dashboard bringing together real-time sales trends, pending orders, and recent activity timelines.
+              </p>
+            </div>
+            <div class="pro-card-footer">
+              <div class="pro-card-badges">
+                <span>Unified · High-Density</span>
+              </div>
+              <button class="pro-inspect-btn" data-pro-inspect="overview">
+                <span>Preview</span>
+                <svg class="lucide lucide-arrow-up-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 5. Frontend Craftsmanship & Architecture Highlights -->
+    <section class="pro-features-section">
+      <div class="pro-features-header">
+        <span class="pro-brand-pill" style="align-self: center;">Architectural Foundations</span>
+        <h2 class="pro-section-title">Built with Pure Hush UI Principles</h2>
+        <p class="pro-section-subtitle">
+          Designed from first principles to deliver an extraordinary desktop and mobile experience for mission-critical administrative workflows.
+        </p>
+      </div>
+
+      <div class="pro-features-grid">
+        <div class="pro-feature-card">
+          <div class="pro-feature-icon">
+            <svg class="lucide lucide-layers" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+          </div>
+          <h3 class="pro-feature-title">51+ Atomic Primitives</h3>
+          <p class="pro-feature-desc">
+            Constructed entirely from Hush UI core components—buttons, badges, comboboxes, cards, segmented controls, and modals.
+          </p>
+        </div>
+
+        <div class="pro-feature-card">
+          <div class="pro-feature-icon">
+            <svg class="lucide lucide-activity" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="pro-feature-title">Fluid Spring Motion</h3>
+          <p class="pro-feature-desc">
+            Non-blocking physics-based drawer transitions, hover elevations, and popovers that respond with natural inertia.
+          </p>
+        </div>
+
+        <div class="pro-feature-card">
+          <div class="pro-feature-icon">
+            <svg class="lucide lucide-palette" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z"/></svg>
+          </div>
+          <h3 class="pro-feature-title">Dark & Light Foundations</h3>
+          <p class="pro-feature-desc">
+            Engineered with tokenized color mixing (`color-mix()`) for pristine optical contrast across every dashboard screen.
+          </p>
+        </div>
+
+        <div class="pro-feature-card">
+          <div class="pro-feature-icon">
+            <svg class="lucide lucide-smartphone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><line x1="12" x2="12.01" y1="18" y2="18"/></svg>
+          </div>
+          <h3 class="pro-feature-title">Responsive Breakpoints</h3>
+          <p class="pro-feature-desc">
+            Carefully tuned for Desktop, Tablet (horizontal and vertical orientation), and Mobile phones with collapsible navigation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Footer -->
+    <footer class="pro-footer">
+      <div>
+        <span>&copy; 2026 Hush UI. Calm, spring-motion design system.</span>
+      </div>
+      <div class="pro-footer-links">
+        <a href="/" class="ui-link ui-link--muted">Home</a>
+        <a href="/pages/components.html" class="ui-link ui-link--muted">Components</a>
+        <a href="/pages/sections.html" class="ui-link ui-link--muted">Sections</a>
+        <a href="https://github.com/zakiuhh/hush-ui" target="_blank" rel="noreferrer" class="ui-link ui-link--muted">GitHub</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- 7. Fullscreen Lightbox Modal Inspector -->
+  <div id="pro-inspector-modal" class="pro-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pro-modal-title">
+    <div class="pro-modal-window">
+      <!-- Modal Header -->
+      <div class="pro-modal-header">
+        <div style="display:flex; align-items:center; gap:10px; min-width:0;">
+          <span id="pro-modal-badge" class="pro-card-cat">Preview</span>
+          <h3 id="pro-modal-title" style="font-size:var(--text-base); font-weight:700; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Screen Preview</h3>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:10px;">
+          <!-- Light/Dark Mode Switcher inside Modal -->
+          <button id="pro-modal-theme-switcher" class="ui-button ui-button--ghost" type="button" style="padding: 6px 10px; font-size: 11px; gap: 5px;" title="Toggle between Dark and Light view of this screen">
+            <svg class="lucide lucide-sun-moon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a2.83 2.83 0 0 0 4 4 4 4 0 1 1-4-4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.3 17.7-1.4 1.4"/><path d="m19.1 4.9-1.4 1.4"/></svg>
+            <span class="pro-desktop-only">Flip Theme</span>
+          </button>
+
+          <!-- Close Modal -->
+          <button class="ui-button ui-button--ghost" data-pro-modal-close aria-label="Close preview modal (Esc)" style="padding: 6px 10px; font-size: 11px; gap: 4px;">
+            <svg class="lucide lucide-x" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            <kbd class="ui-kbd pro-desktop-only" style="font-size: 9px;">Esc</kbd>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Stage Wrapper -->
+      <div class="pro-modal-stage-wrapper">
+        <div class="pro-modal-image-container">
+          <img id="pro-modal-img" src="/assets/display/full hashboard ss.png" alt="Screen preview" />
+        </div>
+      </div>
+
+      <!-- Modal Sub-bar with screen description -->
+      <div style="padding: 10px 20px; background-color: var(--card); border-top: var(--border-default); font-size: 12px; color: var(--muted-foreground);">
+        <span id="pro-modal-desc">Dashboard screen view</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
