@@ -170,7 +170,13 @@
   background-color: color-mix(in srgb, var(--primary) 12%, var(--card));
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .components-nav-right a[href*="github"] {
+    display: none !important;
+  }
+}
+
+@media (max-width: 860px) {
   .comp-desktop-only {
     display: none !important;
   }
@@ -182,6 +188,37 @@
   }
   .components-top-nav {
     padding-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* HIDE Hush UI text from Components page when using mobile phone */
+  .components-brand-badge .brand-name {
+    display: none !important;
+  }
+  .components-brand-badge .brand-sep,
+  .components-brand-badge .brand-page {
+    display: none !important;
+  }
+  .catalog-badge,
+  #component-count-badge {
+    display: none !important;
+  }
+  .components-top-nav {
+    padding-bottom: 12px;
+    gap: 8px;
+  }
+  .components-nav-left {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .components-back-btn span {
+    display: none !important;
+  }
+  .components-back-btn {
+    padding: 6px 10px;
   }
 }
 
@@ -728,6 +765,24 @@
   opacity: 0;
   transition: transform var(--duration-slow) var(--ease-spring),
               opacity var(--duration-base) var(--ease-soft-out);
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .ui-inspector-window {
+    width: 95vw;
+    max-width: 95vw;
+    max-height: 92vh;
+  }
+  .ui-inspector-sidebar {
+    width: 240px;
+  }
+  .inspector-sidebar-inner {
+    width: 240px;
+    padding: var(--space-4);
+  }
+  .ui-inspector-stage-area {
+    padding: var(--space-4);
+  }
 }
 
 @media (max-width: 640px) {
@@ -1354,10 +1409,11 @@
 
 @media (max-width: 640px) {
   .ui-inspector-stage {
-    padding: 16px 12px !important;
-    min-height: 180px;
+    padding: 20px 12px !important;
+    min-height: 200px;
     max-width: 100% !important;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
   }
 
@@ -1365,6 +1421,7 @@
   .ui-inspector-stage .ui-avatar-group,
   .ui-inspector-stage .ui-tabs-list,
   .ui-inspector-stage .ui-form-group,
+  .ui-inspector-stage .ui-segmented,
   .ui-inspector-stage [style*="display: flex"],
   .ui-inspector-stage [style*="display:flex"] {
     max-width: 100% !important;
@@ -1376,7 +1433,11 @@
   .ui-inspector-stage .ui-counter-card,
   .ui-inspector-stage .ui-alert,
   .ui-inspector-stage .ui-input,
-  .ui-inspector-stage .ui-combobox {
+  .ui-inspector-stage .ui-combobox,
+  .ui-inspector-stage .ui-slider-container,
+  .ui-inspector-stage .ui-dropzone,
+  .ui-inspector-stage .ui-code-view,
+  .ui-inspector-stage .ui-table-container {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -1388,6 +1449,7 @@
 
   .ui-inspector-stage > * {
     max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
 

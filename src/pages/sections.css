@@ -129,7 +129,13 @@
   background-color: color-mix(in srgb, var(--primary) 12%, var(--card));
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .sections-nav-right a[href*="github"] {
+    display: none !important;
+  }
+}
+
+@media (max-width: 860px) {
   .sec-desktop-only {
     display: none !important;
   }
@@ -141,6 +147,33 @@
   }
   .sections-top-nav {
     padding-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* HIDE Hush UI text from Sections page when using mobile phone */
+  .sections-brand-badge .brand-name {
+    display: none !important;
+  }
+  .sections-brand-badge .brand-sep,
+  .sections-brand-badge .brand-page {
+    display: none !important;
+  }
+  .sections-top-nav {
+    padding-bottom: 12px;
+    gap: 8px;
+  }
+  .sections-nav-left {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .sections-back-btn span {
+    display: none !important;
+  }
+  .sections-back-btn {
+    padding: 6px 10px;
   }
 }
 
@@ -423,33 +456,6 @@
   transition: transform var(--duration-slow) var(--spring-hover);
 }
 
-@media (max-width: 640px) {
-  .sections-page-wrapper {
-    padding: 16px 14px 60px 14px;
-    gap: 24px;
-  }
-  .sections-hero-title {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-  }
-  .sec-modal-backdrop {
-    padding: 8px;
-  }
-  .sec-modal-window {
-    height: 96vh;
-    border-radius: var(--radius-md);
-  }
-  .sec-modal-header {
-    padding: 12px 14px;
-    gap: 12px;
-  }
-  .sec-modal-stage-wrapper {
-    padding: 16px 8px;
-  }
-  .sec-viewport-controls {
-    flex-shrink: 0;
-  }
-}
-
 .sec-modal-backdrop.is-open .sec-modal-window {
   transform: scale(1) translateY(0);
 }
@@ -557,6 +563,27 @@
   border-radius: 28px;
 }
 
+@media (min-width: 641px) and (max-width: 1024px) {
+  .sec-modal-backdrop {
+    padding: 14px;
+  }
+  .sec-modal-window {
+    width: 95vw;
+    max-width: 95vw;
+    height: 92vh;
+  }
+  .sec-modal-header {
+    padding: 14px 18px;
+    gap: 12px;
+  }
+  .sec-modal-stage-wrapper {
+    padding: 24px 14px;
+  }
+  .sec-responsive-frame.frame-desktop {
+    max-width: 100% !important;
+  }
+}
+
 @media (max-width: 768px) {
   .sec-responsive-frame {
     max-width: 100% !important;
@@ -617,6 +644,81 @@
   .sec-footer-top {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .sections-page-wrapper {
+    padding: 16px 14px 60px 14px;
+    gap: 20px;
+  }
+  .sections-hero-title {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+  }
+  .sec-modal-backdrop {
+    padding: 6px;
+  }
+  .sec-modal-window {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 96vh;
+    border-radius: var(--radius-md);
+  }
+  .sec-modal-header {
+    padding: 10px 12px;
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .sec-modal-header > div:first-child {
+    gap: 6px;
+    min-width: 0;
+  }
+  #sec-modal-title {
+    font-size: 13px !important;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #sec-modal-badge {
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+  }
+  .sec-viewport-controls {
+    flex-shrink: 0;
+    gap: 2px;
+    padding: 2px;
+  }
+  .sec-viewport-btn {
+    padding: 4px 6px;
+  }
+  /* Hide text labels in viewport buttons on mobile phones */
+  .sec-viewport-btn span {
+    display: none !important;
+  }
+  .ui-view-switcher {
+    padding: 2px;
+  }
+  .ui-view-tab-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  .inspector-close-btn {
+    padding: 4px 8px !important;
+  }
+  .inspector-close-btn kbd {
+    display: none !important;
+  }
+  .sec-modal-stage-wrapper {
+    padding: 12px 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .sec-responsive-frame {
+    max-width: 100% !important;
+    border-radius: var(--radius-sm);
+  }
+  .sec-responsive-frame.frame-mobile {
+    border-radius: 20px;
   }
 }
 

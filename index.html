@@ -152,7 +152,13 @@
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
+      .landing-nav-links a[href*="github"] {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 880px) {
       .landing-nav-link-desktop {
         display: none !important;
       }
@@ -165,6 +171,24 @@
       }
       .landing-mobile-toggle {
         display: inline-flex !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .landing-nav {
+        gap: 8px;
+        padding-bottom: 16px;
+      }
+      .landing-nav-links {
+        gap: 6px;
+      }
+      /* Always show Hush UI text on Main Homepage */
+      .landing-brand .landing-brand-name {
+        display: inline-block !important;
+        font-size: 16px !important;
+      }
+      .landing-brand {
+        gap: 8px;
       }
     }
 
@@ -517,7 +541,7 @@
           <img src="/assets/hush-ui-icon-coil-light.svg" alt="Hush UI Logo" class="hush-logo hush-logo--light" width="32" height="32" />
           <img src="/assets/hush-ui-icon-coil-dark.svg" alt="Hush UI Logo" class="hush-logo hush-logo--dark" width="32" height="32" />
         </div>
-        <span style="font-weight: 700; font-size: var(--text-lg); letter-spacing: -0.02em;">Hush UI</span>
+        <span class="landing-brand-name" style="font-weight: 700; font-size: var(--text-lg); letter-spacing: -0.02em;">Hush UI</span>
       </a>
 
       <div class="landing-nav-links">
