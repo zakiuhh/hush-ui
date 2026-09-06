@@ -1771,7 +1771,7 @@ initCounters();`
   border-radius: var(--radius-lg, 16px);
   overflow: hidden;
   border: var(--border-default);
-  cursor: ew-resize;
+  cursor: grab;
 }
 
 .ui-compare-item {

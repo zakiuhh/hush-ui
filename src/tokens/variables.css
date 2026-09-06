@@ -61,6 +61,11 @@
   --text-4xl: 36px;  --leading-4xl: 50px;
 
   --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Font Aliases */
+  --font-heading: var(--font-display);
+  --font-sans: var(--font-body);
 
   --font-regular: 400;
   --font-medium: 500;

@@ -406,7 +406,8 @@
 .sections-footer .footer-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .sections-footer .footer-link {

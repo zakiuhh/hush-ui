@@ -81,3 +81,18 @@ a.ui-button--ghost:hover {
   filter: none;
   box-shadow: var(--shadow-xs);
 }
+
+/* Pro Sparkles Icon - Always synchronized with button text color for maximum visibility */
+.pro-sparkle-icon {
+  color: currentColor !important;
+  fill: currentColor !important;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--spring-hover);
+}
+
+.ui-button:hover .pro-sparkle-icon,
+.landing-mobile-nav-item:hover .pro-sparkle-icon,
+.components-mobile-nav-item:hover .pro-sparkle-icon,
+.sections-mobile-nav-item:hover .pro-sparkle-icon {
+  transform: scale(1.18) rotate(8deg);
+}
